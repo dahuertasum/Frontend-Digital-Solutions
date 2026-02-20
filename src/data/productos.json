@@ -1,0 +1,283 @@
+[
+    {
+      "id": 1,
+      "nombre": "Portátil Asus Tuf Fa506ncr Amd Ryzen 7 8gb 512gb rtx 3050 Color Negro",      
+      "precio": 3589000,
+      "nuevo": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus1.jpg",
+        "back": "portatiles/Asus/asus1atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 2,
+      "nombre": "Portatil Asus Vivobook X1504za-nj372 Corei5 1235u 20gb 512gb Azul",
+      "precio": 2254093,
+      "precioDescuento": 1999999,
+      "oferta": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus2.jpg",
+        "back": "portatiles/Asus/Asus2atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 3,
+      "nombre": "Portátil Asus X1605za Core I5 12500h 16gb 512gb Vivobook 16 Color Negro",
+      "precio": 1935630,
+      "nuevo": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus3.jpg",
+        "back": "portatiles/Asus/Asus3atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 4,
+      "nombre": "Asus X1504ZA-NJ Portatil Vivobook Core I3 1215u Ram 12gb Ssd 512gb Fhd Color Gris",
+      "precio": 1629900,
+      "precioDescuento": 1229600,
+      "oferta": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus4.jpg",
+        "back": "portatiles/Asus/asus4atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 5,
+      "nombre": "Notebook Asus Vivobook Core 9 Ultra 185h 16gb Ssd 14pul Oled Color Negro",
+      "precio": 1100000,
+      "precioDescuento": 691000,
+      "oferta": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus5.jpg",
+        "back": "portatiles/Asus/Asus5atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 6,
+      "nombre": "Portátil Asus Tuf Fa506ncr Amd Ryzen 7 - 16gb 512gb-rtx 3050",
+      "precio": 1879900,
+      "nuevo": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus6.jpg",
+        "back": "portatiles/Asus/Asus6atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 7,
+      "nombre": "Portátil Asus M3504ya-bq294 Ryzen 7 7730u 16gb 512gb 15 Fhd Negro",    
+      "precio": 2800000,
+      "precioDescuento": 2550000,
+      "oferta": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus7.jpg",
+        "back": "portatiles/Asus/Asus7atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    {
+      "id": 8,
+      "nombre": "Notebook Asus Vivobook S Wuxga 14 Fhd Oled 1tb / 32gb Intel Core Ultra 7 Series 2 258v W11 - Black", 
+      "precio": 4999999,
+      "nuevo": true,
+      "imagenes":{
+        "front":"portatiles/Asus/Asus8.jpg",
+        "back": "portatiles/Asus/Asus8atras.jpg"
+      },
+      "marca":"Asus"
+    },
+    
+    {
+      "id": 9,
+      "nombre": "Portátil Acer Nitro V Amd 7535hs Rtx 2050 Ram 16gb M.2 512gb Color Negro",  
+      "precio": 3019900,
+      "imagenes":{
+        "front":"portatiles/Acer/Acer1.jpg",
+        "back": "portatiles/Acer/Acer1atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+        "id": 10,
+        "nombre": "Portatil Acer A315-59-50kp Ci5 1235u 15,6 8gb 512gb Ssd Win Color Gris",     
+        "precio": 1938900,
+        "imagenes":{
+        "front":"portatiles/Acer/Acer2.jpg",
+        "back": "portatiles/Acer/Acer2atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 11,
+      "nombre": "Computador Portátil Acer Ci3 1005g1 15,6 8gb 1tb Windows 10",    
+      "precio": 1750000,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer3.jpg",
+        "back": "portatiles/Acer/Acer3atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 12,
+      "nombre": "Portátil Acer An515-58-737a Ci7 12700h/16gb/1tb Ssd/15.6/rtx Color Negro",  
+      "precio": 5333900,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer4.jpg",
+        "back": "portatiles/Acer/Acer4atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 13,
+      "nombre": "Acer Travelmate Tmp214-55 Core I5 - 16gb - 512gb - 14 Wuxga",   
+      "precio": 2589900,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer5.jpg",
+        "back": "portatiles/Acer/Acer5atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 14,
+      "nombre": "Portátil Acer Nitro V15 Ryzen 5 7535h Ram 32gb 512gb Rtx2050", 
+      "precio": 3164900,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer6.jpg",
+        "back": "portatiles/Acer/Acer6atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 15,
+      "nombre": "Portátil Acer 15.6 Intel I5 Ram 8gb Ddr4 256gb Ssd Black",
+      "precio": 1744186,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer7.jpg",
+        "back": "portatiles/Acer/Acer7atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+      "id": 16,
+      "nombre": "Acer Nitro Intel Core I9 13900h Ssd 1tb + Ram 40gb Rtx 4060",    
+      "precio": 7589900,
+       "imagenes":{
+        "front":"portatiles/Acer/Acer8.jpg",
+        "back": "portatiles/Acer/Acer8atras.jpg"
+      },
+      "marca":"Acer"
+    },
+    {
+
+
+      "id": 17,
+      "nombre": "Portátil Hp 14-dq0533la 14 8gb De Ram - 256gb Ssd - Intel Celeron",  
+      "precio": 1185375,
+      "precioDescuento": 899900,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP1.jpg",
+        "back": "portatiles/HP/HP1atras.jpg"
+      },
+      "marca":"Hp"
+    },
+    {
+      "id": 18,
+      "nombre": "Notebook 15,6 Hp 250 G9 Intel Celeron 8 Gb Ram 256 Gb Ssd Color Negro",  
+      "precio": 1212625,
+      "precioDescuento": 914900,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP2.jpg",
+        "back": "portatiles/HP/HP2atras.jpg"
+      },
+      "marca":"Hp"
+    },
+    {
+      "id": 19,
+      "nombre": "Notebook Hp 245 G10 R3 7330u 512gb Ssd 8gb Ram Windows 11 Ho",  
+      "precio": 1241900,
+       "imagenes":{
+        "front":"portatiles/HP/HP3.jpg",
+        "back": "portatiles/HP/HP3atras.jpg"
+      },
+      "marca":"Hp"
+
+  
+    },
+    {
+      "id": 20,
+      "nombre": "Hp 15-fd0006la - Core I7 1355u 24gb 512gb Pan 15,6 Fhd",  
+      "precio": 3550670,
+      "precioDescuento": 2751900,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP4.jpg",
+        "back": "portatiles/HP/HP4atras.jpg"
+      },
+      "marca":"Hp"
+    },
+    {
+      "id": 21,
+      "nombre": "Portátil Hp 14-dq0520la Intel N4120 Quad Core 8gb 256gb 14 Plateado",  
+      "precio": 1150000,
+       "imagenes":{
+        "front":"portatiles/HP/HP5.jpg",
+        "back": "portatiles/HP/HP5atras.jpg"
+      },
+      "marca":"Hp"
+    
+    },
+    {
+      "id": 22,
+      "nombre": "Portátil Hp 15-fc0012la Ryzen 7 7730u 32gb 512gb Fhd 15.6",  
+      "precio": 3899000,
+      "precioDescuento": 2279000,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP6.jpg",
+        "back": "portatiles/HP/HP6atras.jpg"
+      },
+      "marca":"Hp"
+    },
+    {
+      "id": 23,
+      "nombre": "Notebook Hp Victus 15-fa0033dx Intel Core I5 12450h Rtx 3050 8gb De Ram 512gb Ssd Gráficos Nvidia Geforce Rtx 3050 Windows 11 Home",  
+      "precio": 3499000,
+      "precioDescuento": 2974150,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP7.jpg",
+        "back": "portatiles/HP/HP7atras.jpg"
+      },
+      "marca":"Hp"
+    },
+
+    {
+      "id": 24,
+      "nombre": "Hp Victus 15 I5 12va 16gb 512gbssd Rtx3050 4gb 15.6 Fhd W11 Color Negro",  
+      "precio": 3700000,
+      "precioDescuento": 3404000,
+      "oferta": true,
+       "imagenes":{
+        "front":"portatiles/HP/HP8.jpg",
+        "back": "portatiles/HP/HP8atras.jpg"
+      },
+      "marca":"Hp"
+    }
+
+
+
+
+
+
+
+
+
+  ]
+  

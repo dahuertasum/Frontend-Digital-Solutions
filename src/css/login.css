@@ -1,0 +1,271 @@
+.login-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #A3D3D9, #E6F2E7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.login-card h2 {
+  color: #2F4017;
+  margin-bottom: 10px;
+}
+
+.login-card p {
+  color: #45591B;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  color: #2F4017;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #808C20;
+  box-shadow: 0 0 0 3px rgba(128, 140, 32, 0.2);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: #45591B;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background: #808C20;
+  transform: translateY(-2px);
+}
+
+.login-extra {
+  margin-top: 25px;
+  font-size: 0.85rem;
+}
+
+.login-extra a {
+  color: #45591B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-extra a:hover {
+  text-decoration: underline;
+}
+.social-divider {
+  margin: 25px 0;
+  position: relative;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.social-divider::before,
+.social-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.social-divider::before {
+  left: 0;
+}
+
+.social-divider::after {
+  right: 0;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.social-btn img {
+  width: 18px;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.social-btn.google:hover {
+  border-color: #ea4335;
+}
+
+.social-btn.github:hover {
+  border-color: #333;
+}
+
+/* Registro */
+
+.register-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E6F2E7, #A3D3D9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.register-card {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.register-card h2 {
+  color: #2F4017;
+  margin-bottom: 10px;
+}
+
+.register-card p {
+  color: #45591B;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 14px;
+  background: #45591B;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.btn-register:hover {
+  background: #808C20;
+  transform: translateY(-2px);
+}
+
+.register-extra {
+  margin-top: 25px;
+  font-size: 0.85rem;
+}
+
+.register-extra a {
+  color: #45591B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-extra a:hover {
+  text-decoration: underline;
+}
+
+
+.login-card,
+.register-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+/* Media  QUERY TABLET */
+@media (max-width: 768px) {
+
+  .login-card,
+  .register-card {
+    max-width: 90%;
+  }
+
+  .login-card h2,
+  .register-card h2 {
+    font-size: 1.8rem;
+  }
+
+}
+/* Media  QUERY PANTALLAS GRANDES */
+@media (min-width: 1400px) {
+
+  .login-card {
+    max-width: 480px;
+    padding: 60px 50px;
+  }
+
+  .register-card {
+    max-width: 520px;
+    padding: 60px 50px;
+  }
+
+}
+@media (max-width: 480px) {
+  .login-section,
+  .register-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
