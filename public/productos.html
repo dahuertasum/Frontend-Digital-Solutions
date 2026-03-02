@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/css/style.css">
-    <title>Digital Solution</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/css/style.css">
+  <title>Digital Solution</title>
 </head>
+
 <body>
-<section class="marquesina">
+  <section class="marquesina">
     <div class="mensajes">
       <div class="mensaje"> ♻ Tecnología reacondicionada</div>
       <div class="mensaje">Envíos a todo Colombia</div>
@@ -45,65 +47,297 @@
     </div>
   </section>
 
-  
-<header class="topbar">
-  <div class="logo-container">
-    <img class="logo" src="../src/assets/img/logos/logo.png" alt="Certificado">
-       
-  </div>
 
-  <div class="search-box">
-    <input type="text" placeholder="Buscar productos...">
-  </div>
-  <nav class="nav-principal">
-    <a href="../public/index.html">Inicio</a>    
-    <a href="#">Empresas</a>
-    <a href="#">Nosotros</a>
-    <a href="#">Garantía</a>
-    <a href="#">Contacto</a>
+  <header class="topbar">
+    <div class="logo-container">
+      <img class="logo" src="../src/assets/img/logos/logo.png" alt="Certificado">
 
-
-  </nav>
-
-  <div class="actions">
-    
-    <a class="btn primary">Iniciar sesión</a>
-    <a class="btn outline">Regístrate</a>
-    <a class="cart">
-      🛒 <span class="badge">0</span>
-    </a>
-  </div>
-</header>
-
-
-
-
-
-<!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
-<main>
-   <div class="product-parra">
-      <h2>Nuestros Productos</h2>
     </div>
-    <section id="productos">
-      
-        
+
+    <div class="search-box">
+      <input type="text" placeholder="Buscar productos...">
+    </div>
+    <nav class="nav-principal">
+      <a href="../public/index.html">Inicio</a>
+      <a href="../public/index.html">Nosotros</a>
+      <a href="../public/productos.html">Productos</a>
+      <a href="../public/index.html">Garantía</a>
+      <a href="#">Contacto</a>
+      <a href="documentacion.html">Documentación</a>
+    </nav>
+
+    <div class="actions">
+
+      <a href="../public/login.html" class="btn primary">Iniciar sesión</a>
+      <a href="../public/registro.html" class="btn outline">Regístrate</a>
+      <button id="cart" type="button" class="cart">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+      </button>
+      <span id="cartCount">0</span>
+        <table class="caja" id="caja">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="contentProducts">
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  <p class="total">Total: <span id="total"></span></p>
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
+  <main>
+    <h2 class="product-tittle">Nuestros Productos</h2>
+    <section class="products" id="productos">
+      <article class="products-grid container">
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer1.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Asus Tuf Fa506ncr Amd Ryzen 7 8gb 512gb rtx 3050 Color Negro</p>
+            <div class="price">
+              <p id="price">3589000</p>
+            </div>
+            <button class="btn-add" type="button" data-id="1">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer2.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portatil Asus Vivobook X1504za-nj372 Corei5 1235u 20gb 512gb Azul</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="2">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer3.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Asus X1605za Core I5 12500h 16gb 512gb Vivobook 16 Color Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="3">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer4.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Asus X1504ZA-NJ Portatil Vivobook Core I3 1215u Ram 12gb Ssd 512gb Fhd Color Gris</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="4">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer5.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Notebook Asus Vivobook Core 9 Ultra 185h 16gb Ssd 14pul Oled Color Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="5">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer6.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Asus Tuf Fa506ncr Amd Ryzen 7 - 16gb 512gb-rtx 3050</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="6">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer7.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Asus M3504ya-bq294 Ryzen 7 7730u 16gb 512gb 15 Fhd Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="7">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Acer/Acer8.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Notebook Asus Vivobook S Wuxga 14 Fhd Oled 1tb / 32gb Intel Core Ultra 7 Series 2 258v W11 - Black</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="8">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus1.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Acer Nitro V Amd 7535hs Rtx 2050 Ram 16gb M.2 512gb Color Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="9">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus2.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portatil Acer A315-59-50kp Ci5 1235u 15,6 8gb 512gb Ssd Win Color Gris</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="10">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus3.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Computador Portátil Acer Ci3 1005g1 15,6 8gb 1tb Windows 10</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="11">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus4.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Acer An515-58-737a Ci7 12700h/16gb/1tb Ssd/15.6/rtx Color Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="12">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus5.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Acer Travelmate Tmp214-55 Core I5 - 16gb - 512gb - 14 Wuxga</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="13">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus6.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Acer Nitro V15 Ryzen 5 7535h Ram 32gb 512gb Rtx2050</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="14">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus7.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Acer 15.6 Intel I5 Ram 8gb Ddr4 256gb Ssd Black</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="15">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Asus/Asus8.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Acer Nitro Intel Core I9 13900h Ssd 1tb + Ram 40gb Rtx 4060</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="16">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp1.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Hp 14-dq0533la 14 8gb De Ram - 256gb Ssd - Intel Celeron</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="17">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp2.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Notebook 15,6 Hp 250 G9 Intel Celeron 8 Gb Ram 256 Gb Ssd Color Negro</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="18">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp3.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Notebook Hp 245 G10 R3 7330u 512gb Ssd 8gb Ram Windows 11 Ho</p>
+            <div class="price">3589000</div>
+            <button class="btn-add" type="button" data-id="19">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp4.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Hp 15-fd0006la - Core I7 1355u 24gb 512gb Pan 15,6 Fhd</p>
+            <div class="price">$3.550.670</div>
+            <button class="btn-add" type="button" data-id="20">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp5.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Hp 14-dq0520la Intel N4120 Quad Core 8gb 256gb 14 Plateado</p>
+            <div class="price">$1.150.000</div>
+            <button class="btn-add" type="button" data-id="21">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp6.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Portátil Hp 15-fc0012la Ryzen 7 7730u 32gb 512gb Fhd 15.6</p>
+            <div class="price">$3.899.000</div>
+            <button class="btn-add" type="button" data-id="22">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp7.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Notebook Hp Victus 15-fa0033dx Intel Core I5 12450h Rtx 3050 8gb De Ram 512gb Ssd Gráficos Nvidia Geforce Rtx 3050 Windows 11 Home</p>
+            <div class="price">$3.499.000</div>
+            <button class="btn-add" type="button" data-id="23">Añadir al carrito</button>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../src/assets/img/portatiles/Hp/Hp8.jpg" alt="Acer">
+          <div class="product-info">
+            <p class="product-text">Hp Victus 15 I5 12va 16gb 512gbssd Rtx3050 4gb 15.6 Fhd W11 Color Negro</p>
+            <div class="price">$3.700.000</div>
+            <button class="btn-add" type="button" data-id="24">Añadir al carrito</button>
+          </div>
+        </div>
+      </article>
     </section>
-
-</main>
-
+  </main>
 
 
 
 
+  <div class="botones-accesibilidad">
+    <button id="aumentarFuente">A+</button>
+    <button id="disminuirFuente">A-</button>
+    <button id="contraste">🌙</button>
+  </div>
 
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Digital Solutions</h4>
+        <p>Tecnología reacondicionada con impacto positivo.</p>
+      </div>
 
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="../public/productos.html">Productos</a></li>
+          <li><a href="../public/index.html">Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
 
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>soporte@digitalsolutions.com</p>
+        <p>+57 300 000 0000</p>
+      </div>
+    </div>
 
+    <p class="footer-bottom">© 2026 - Digital Solutions</p>
+  </footer>
 
-<footer>
-    <p>&copy; 2026 - Digital Solutions</p>
-</footer>
-
-<script src="../src/js/app.js"></script>
+  <script src="../src/js/app.js"></script>
+  <script src="../src/js/cart.js"></script>
+  <script src="https://kit.fontawesome.com/ba3c266dea.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

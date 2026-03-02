@@ -7,13 +7,56 @@
   padding: 40px;
 }
 
+.back-fixed {
+  position: relative;
+  right: 50%;
+  background-color: #45591B;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.botones-accesibilidad {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+  transform: translateY(-50%);
+}
+
+.botones-accesibilidad button {
+  background-color: #808c20;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.modo-contraste {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: black !important;
+  color: white;
+}
+
+
 .login-card {
   background: #ffffff;
   padding: 50px 40px;
   border-radius: 20px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -86,6 +129,7 @@
 .login-extra a:hover {
   text-decoration: underline;
 }
+
 .social-divider {
   margin: 25px 0;
   position: relative;
@@ -138,7 +182,7 @@
 
 .social-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .social-btn.google:hover {
@@ -166,7 +210,7 @@
   border-radius: 20px;
   width: 100%;
   max-width: 450px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -247,6 +291,7 @@
   }
 
 }
+
 /* Media  QUERY PANTALLAS GRANDES */
 @media (min-width: 1400px) {
 
@@ -261,7 +306,9 @@
   }
 
 }
+
 @media (max-width: 480px) {
+
   .login-section,
   .register-section {
     min-height: auto;

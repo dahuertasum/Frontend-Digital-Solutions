@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/css/style.css">
-    <title>Digital Solution</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/css/style.css">
+  <title>Digital Solution</title>
 </head>
+
 <body>
- <section class="marquesina">
+  <section class="marquesina">
     <div class="mensajes">
       <div class="mensaje"> ♻ Tecnología reacondicionada</div>
       <div class="mensaje">Envíos a todo Colombia</div>
@@ -45,220 +47,222 @@
     </div>
   </section>
 
-  
-<header class="topbar">
-  <div class="logo-container">
-    <img class="logo" src="../src/assets/img/logos/logo.png" alt="Certificado">
-       
-  </div>
 
-  <div class="search-box">
-    <input type="text" placeholder="Buscar productos...">
-  </div>
-  <nav class="nav-principal">
-    <a href="../public/index.html">Inicio</a>   
-    <a href="#">Empresas</a>
-    <a href="#">Nosotros</a>
-    <a href="#">Garantía</a>
-    <a href="#">Contacto</a>
-    <a href="documentacion.html">Documentación</a>
+  <header class="topbar">
+    <div class="logo-container">
+      <img class="logo" src="../src/assets/img/logos/logo.png" alt="Certificado">
 
-  </nav>
-
-  <div class="actions">
-    
-    <a class="btn primary" href="../public/login.html">Iniciar sesión</a>
-    <a class="btn outline" href="../public/registro.html">Regístrate</a>
-    <a class="cart">
-      🛒 <span class="badge">0</span>
-    </a>
-  </div>
-</header>
-
-
-
-<section class="hero-light">
-  <div class="hero-grid">
-
-    <!-- TEXTO -->
-    <div class="hero-text">
-      <h1>Construimos experiencias digitales</h1>
-      <p>
-        Tecnología reacondicionada de alta calidad.
-        Diseñados para potenciar tu productividad y cuidar el planeta.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn-hero primari">Conocer más</a>
-        <a class="buton contac">Contáctanos</a>
-      </div>
     </div>
 
-    <!-- IMAGEN -->
-    <div class="hero-right">
+    <div class="search-box">
+      <input type="text" placeholder="Buscar productos...">
+    </div>
+    <nav class="nav-principal">
+      <a href="../public/index.html">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="../public/productos.html">Productos</a>
+      <a href="#ecosistema">Garantía</a>
+      <a href="#">Contacto</a>
+      <a href="documentacion.html">Documentación</a>
+    </nav>
 
-        
-        
+    <div class="actions">
 
+      <a class="btn primary" href="../public/login.html">Iniciar sesión</a>
+      <a class="btn outline" href="../public/registro.html">Regístrate</a>
+      <button id="cart" type="button" class="cart">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+      </button>
+      <span id="cartCount">0</span>
+      <table class="caja" id="caja">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="contentProducts">
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <p class="total">Total: <span id="total"></span></p>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </header>
+
+
+
+  <section class="hero-light">
+    <div class="hero-grid">
+
+      <!-- TEXTO -->
+      <div class="hero-text">
+        <h1>Construimos experiencias digitales</h1>
+        <p>
+          Tecnología reacondicionada de alta calidad.
+          Diseñados para potenciar tu productividad y cuidar el planeta.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn-hero primari">Conocer más</a>
+          <a class="buton contac">Contáctanos</a>
+        </div>
+      </div>
+
+      <!-- IMAGEN -->
+      <div class="hero-right">
         <!-- BADGE -->
         <div class="hero-badge">
-            <span class="badge-icon">✔</span>
-            <div>
-                <strong>100%</strong>
-                <p>Certificados</p>
-            </div>
+          <span class="badge-icon">✔</span>
+          <div>
+            <strong>100%</strong>
+            <p>Certificados</p>
+          </div>
         </div>
         <!-- IMAGEN -->
         <div class="hero-image">
-            <img src="../src/assets/img/logos/check.png" alt="Certificado">
+          <img src="../src/assets/img/logos/check.png" alt="Certificado">
         </div>
-
+      </div>
     </div>
+    <div class="botones-accesibilidad">
+      <button id="aumentarFuente">A+</button>
+      <button id="disminuirFuente">A-</button>
+      <button id="contraste">🌙</button>
+    </div>
+  </section>
 
 
-  </div>
-</section>
+  <!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
+  <section class="ecosistema" id="ecosistema">
+    <h2>Por que elegirnos</h2>
+    <p>
+      Garantizados calidad seguridad y compromiso ambiental
+    </p>
+
+    <div class="slider-wrapper">
 
 
-<!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
- <section class="ecosistema">
-  <h2>Por que elegirnos</h2>
-  <p>
-    Garantizados calidad seguridad y compromiso ambiental
-    
-  </p>
-
-  <div class="slider-wrapper">
-    
-
-    <div class="slider" id="slider">
-      <!-- TUS CARDS EXISTENTES -->
-      <div class="eco-card">
-            <h3>Productos Certificados</h3>
-            <div class="card">
-              <p>Todos los equipos pasan por controles de calidad.</p>
-
+      <div class="slider" id="slider">
+        <!-- TUS CARDS EXISTENTES -->
+        <div class="eco-card">
+          <h3>Productos Certificados</h3>
+          <div class="card">
+            <div class="">
+              <img class="logo-precio" src="../src/assets/img/logos/certificado.jpg" alt="Certificado">
             </div>
-            
-      </div>
-      <div class="eco-card">
-            <h3>Garantía Real</h3>
-            <div class="card">
-              <p>Equipos probados y funcionales</p>
-
+            <p>Todos los equipos pasan por controles de calidad.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <h3>Garantía Real</h3>
+          <div class="card">
+            <div class="">
+              <img class="logo-precio" src="../src/assets/img/logos/garantia.png" alt="Certificado">
             </div>
-            
-      </div>
-      <div class="eco-card">
-            <h3>Reutilización</h3>
-            <div class="card">
-              <div class="">
-                <img class="logo-precio" src="../src/assets/img/logos/recycle.png" alt="Certificado">
-              </div>
-              <p>Reducimos el impacto ambiental</p>
-
+            <p>Equipos probados y funcionales</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <h3>Reutilización</h3>
+          <div class="card">
+            <div class="">
+              <img class="logo-precio" src="../src/assets/img/logos/recycle.png" alt="Certificado">
             </div>
-           
-      </div>
-      <div class="eco-card">
-            <h3>Compra Segura</h3>
-            <div class="card">
-              <div class="">
-                <img class="logo-precio" src="../src/assets/img/logos/candado.png" alt="Certificado">
-              </div>
+            <p>Reducimos el impacto ambiental</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <h3>Compra Segura</h3>
+          <div class="card">
+            <div class="">
+              <img class="logo-precio" src="../src/assets/img/logos/candado.png" alt="Certificado">
+            </div>
             <p>Proteccion de datos y pagos confiables.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            </div>
-           
-      </div> 
-       
-      
-      
-      
+
+  <section class="marcas">
+    <div class="fondo-marca">
+
+      <h3>Marcas Aliadas</h3>
+      <p>Trabajamos con fabricantes líderes en tecnología reacondicionada.</p>
+
+      <div class="marcas-grid">
+        <button class="marca-btn" data-marca="Acer">
+          <img src="../src/assets/img/marcas/acer.jpg" alt="Acer">
+        </button>
+
+        <button class="marca-btn" data-marca="Apple">
+          <img src="../src/assets/img/marcas/apple.jpg" alt="Apple">
+        </button>
+
+        <button class="marca-btn" data-marca="Hp">
+          <img src="../src/assets/img/marcas/hp.jpg" alt="HP">
+        </button>
+
+        <button class="marca-btn" data-marca="Asus">
+          <img src="../src/assets/img/marcas/asus.jpg" alt="Asus">
+        </button>
+      </div>
+
+      <div class="trust">
+        <p>+5 años en el mercado</p>
+        <p>+10.000 equipos vendidos</p>
+        <p>100% certificados</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2>¿Listo para renovar tu tecnología?</h2>
+    <p>Descubre equipos certificados, garantizados y sostenibles.</p>
+    <a href="../public/productos.html" class="btn-cta">Ver productos</a>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Digital Solutions</h4>
+        <p>Tecnología reacondicionada con impacto positivo.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="../public/productos.html">Productos</a></li>
+          <li><a href="../public/index.html">Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>soporte@digitalsolutions.com</p>
+        <p>+57 300 000 0000</p>
+      </div>
     </div>
 
-    
-  </div>
-</section>
+    <p class="footer-bottom">© 2026 - Digital Solutions</p>
+  </footer>
 
-
-<section class="marcas">
-  <div class="fondo-marca">
-
-    <h3>Marcas Aliadas</h3>
-    <p>Trabajamos con fabricantes líderes en tecnología reacondicionada.</p>
-
-    <div class="marcas-grid">
-      <button class="marca-btn" data-marca="Acer">
-        <img src="../src/assets/img/marcas/acer.jpg" alt="Acer">
-      </button>
-
-      <button class="marca-btn" data-marca="Apple">
-        <img src="../src/assets/img/marcas/apple.jpg" alt="Apple">
-      </button>
-
-      <button class="marca-btn" data-marca="Hp">
-        <img src="../src/assets/img/marcas/hp.jpg" alt="HP">
-      </button>
-
-      <button class="marca-btn" data-marca="Asus">
-        <img src="../src/assets/img/marcas/asus.jpg" alt="Asus">
-      </button>
-    </div>
-
-    <div class="trust">
-      <p>+5 años en el mercado</p>
-      <p>+10.000 equipos vendidos</p>
-      <p>100% certificados</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="cta-final">
-  <h2>¿Listo para renovar tu tecnología?</h2>
-  <p>Descubre equipos certificados, garantizados y sostenibles.</p>
-  <a href="../public/productos.html" class="btn-cta">Ver productos</a>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<footer class="footer">
-  <div class="footer-content">
-    <div>
-      <h4>Digital Solutions</h4>
-      <p>Tecnología reacondicionada con impacto positivo.</p>
-    </div>
-
-    <div>
-      <h4>Enlaces</h4>
-      <a href="#">Productos</a>
-      <a href="#">Nosotros</a>
-      <a href="#">Contacto</a>
-    </div>
-
-    <div>
-      <h4>Contacto</h4>
-      <p>soporte@digitalsolutions.com</p>
-      <p>+57 300 000 0000</p>
-    </div>
-  </div>
-
-  <p class="copy">© 2026 - Digital Solutions</p>
-</footer>
-
-<script src="../src/js/app.js"></script>
-
+  <script src="../src/js/app.js"></script>
+  <script src="../src/js/cart.js"></script>
+  <script src="https://kit.fontawesome.com/ba3c266dea.js" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
