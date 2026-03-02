@@ -1,26 +1,26 @@
 // CARRITO DE COMPRAS
 
-const btn = document.querySelector('#cart');
-const caja = document.querySelector('#caja');
-
-btn.addEventListener('click', () => {
-    caja.classList.toggle('caja');
-})
-
-const productos = document.querySelector('#productos');
-const contentProducts = document.querySelector('#contentProducts');
-
-console.log(contentProducts);
-
 let productsArray = [];
 
 document.addEventListener('DOMContentLoaded', function () {
-    eventListeners();
+
+    const btn = document.querySelector('#cart');
+    const caja = document.querySelector('#caja');
+    const productos = document.querySelector('#productos');
+    const contentProducts = document.querySelector('#contentProducts');
+
+    if (btn && caja && contentProducts) {
+        btn.addEventListener('click', () => {
+            caja.classList.toggle('caja');
+        })
+    }
+
+    if (productos) {
+        productos.addEventListener('click', getDataElements);
+    }
 });
 
-function eventListeners() {
-    productos.addEventListener('click', getDataElements);
-}
+
 
 function updateCartCount() {
     const cartCount = document.querySelector('#cartCount');
@@ -172,10 +172,10 @@ function showAlert(message, type) {
     document.body.appendChild(div);
 
     setTimeout(() => {
-        alerta.style.opacity = "0";
+        div.style.opacity = "0";
     }, 2500);
 
     setTimeout(() => {
-        alerta.remove();
+        div.remove();
     }, 3000);
 }

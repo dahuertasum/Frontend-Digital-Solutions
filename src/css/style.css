@@ -264,7 +264,13 @@ h3 {
   width: 0px;
 }
 
-
+.msj {
+  position: absolute;
+  left: 100px;
+  top: 60px;
+  width: 300px;
+  font-weight: bold;
+}
 
 .badge {
   position: absolute;
