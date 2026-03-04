@@ -23,13 +23,12 @@
 
 .botones-accesibilidad {
   position: fixed;
-  top: 95%;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   z-index: 1000;
-  transform: translateY(-50%);
 }
 
 .botones-accesibilidad button {
@@ -42,7 +41,6 @@
   border-radius: 5px;
   transition: 0.3s;
 }
-
 
 .login-card {
   background: #ffffff;
