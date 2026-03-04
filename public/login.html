@@ -75,29 +75,38 @@
         <i class="fa-solid fa-cart-arrow-down"></i>
       </button>
       <span id="cartCount">0</span>
-      <table class="caja" id="caja">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody id="contentProducts">
-          <tr>
-            <td class="msj">No hay productos agregados</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5">
-              <p class="total">Total: <span id="total"></span></p>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <div class="caja" id="caja">
+        <table>
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="contentProducts">
+            <tr>
+              <td class="msj">No hay productos agregados</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <p class="total">Total: <span id="total"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button id="checkoutBtn" class="btn primary">
+                  Finalizar compra
+                </button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   </header>
 

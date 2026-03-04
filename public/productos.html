@@ -67,36 +67,44 @@
     </nav>
 
     <div class="actions">
-
       <a href="../public/login.html" class="btn primary">Iniciar sesión</a>
       <a href="../public/registro.html" class="btn outline">Regístrate</a>
       <button id="cart" type="button" class="cart">
         <i class="fa-solid fa-cart-arrow-down"></i>
       </button>
       <span id="cartCount">0</span>
-      <table class="caja" id="caja">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody id="contentProducts">
-          <tr>
-            <td class="msj">No hay productos agregados</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5">
-              <p class="total">Total: <span id="total"></span></p>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <div class="caja" id="caja">
+        <table>
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="contentProducts">
+            <tr>
+              <td class="msj">No hay productos agregados</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <p class="total">Total: <span id="total"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button id="checkoutBtn" class="btn primary">
+                  Finalizar compra
+                </button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   </header>
 
@@ -110,7 +118,7 @@
           <div class="product-info">
             <p class="product-text">Portátil Asus Tuf Fa506ncr Amd Ryzen 7 8gb 512gb rtx 3050 Color Negro</p>
             <div class="price">
-              <p id="price">3589000</p>
+              <div class="price">$3.550.670</div>
             </div>
             <button class="btn-add" type="button" data-id="1">Añadir al carrito</button>
           </div>
@@ -119,7 +127,7 @@
           <img src="../src/assets/img/portatiles/Acer/Acer2.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portatil Asus Vivobook X1504za-nj372 Corei5 1235u 20gb 512gb Azul</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="2">Añadir al carrito</button>
           </div>
         </div>
@@ -127,7 +135,7 @@
           <img src="../src/assets/img/portatiles/Acer/Acer3.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Asus X1605za Core I5 12500h 16gb 512gb Vivobook 16 Color Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="3">Añadir al carrito</button>
           </div>
         </div>
@@ -136,7 +144,7 @@
           <div class="product-info">
             <p class="product-text">Asus X1504ZA-NJ Portatil Vivobook Core I3 1215u Ram 12gb Ssd 512gb Fhd Color Gris
             </p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="4">Añadir al carrito</button>
           </div>
         </div>
@@ -144,7 +152,7 @@
           <img src="../src/assets/img/portatiles/Acer/Acer5.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Notebook Asus Vivobook Core 9 Ultra 185h 16gb Ssd 14pul Oled Color Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="5">Añadir al carrito</button>
           </div>
         </div>
@@ -152,7 +160,7 @@
           <img src="../src/assets/img/portatiles/Acer/Acer6.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Asus Tuf Fa506ncr Amd Ryzen 7 - 16gb 512gb-rtx 3050</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="6">Añadir al carrito</button>
           </div>
         </div>
@@ -160,7 +168,7 @@
           <img src="../src/assets/img/portatiles/Acer/Acer7.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Asus M3504ya-bq294 Ryzen 7 7730u 16gb 512gb 15 Fhd Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="7">Añadir al carrito</button>
           </div>
         </div>
@@ -169,7 +177,7 @@
           <div class="product-info">
             <p class="product-text">Notebook Asus Vivobook S Wuxga 14 Fhd Oled 1tb / 32gb Intel Core Ultra 7 Series 2
               258v W11 - Black</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="8">Añadir al carrito</button>
           </div>
         </div>
@@ -177,7 +185,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus1.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Acer Nitro V Amd 7535hs Rtx 2050 Ram 16gb M.2 512gb Color Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="9">Añadir al carrito</button>
           </div>
         </div>
@@ -185,7 +193,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus2.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portatil Acer A315-59-50kp Ci5 1235u 15,6 8gb 512gb Ssd Win Color Gris</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="10">Añadir al carrito</button>
           </div>
         </div>
@@ -193,7 +201,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus3.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Computador Portátil Acer Ci3 1005g1 15,6 8gb 1tb Windows 10</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="11">Añadir al carrito</button>
           </div>
         </div>
@@ -201,7 +209,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus4.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Acer An515-58-737a Ci7 12700h/16gb/1tb Ssd/15.6/rtx Color Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="12">Añadir al carrito</button>
           </div>
         </div>
@@ -209,7 +217,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus5.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Acer Travelmate Tmp214-55 Core I5 - 16gb - 512gb - 14 Wuxga</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="13">Añadir al carrito</button>
           </div>
         </div>
@@ -217,7 +225,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus6.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Acer Nitro V15 Ryzen 5 7535h Ram 32gb 512gb Rtx2050</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="14">Añadir al carrito</button>
           </div>
         </div>
@@ -225,7 +233,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus7.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Acer 15.6 Intel I5 Ram 8gb Ddr4 256gb Ssd Black</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="15">Añadir al carrito</button>
           </div>
         </div>
@@ -233,7 +241,7 @@
           <img src="../src/assets/img/portatiles/Asus/Asus8.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Acer Nitro Intel Core I9 13900h Ssd 1tb + Ram 40gb Rtx 4060</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="16">Añadir al carrito</button>
           </div>
         </div>
@@ -241,7 +249,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp1.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Hp 14-dq0533la 14 8gb De Ram - 256gb Ssd - Intel Celeron</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="17">Añadir al carrito</button>
           </div>
         </div>
@@ -249,7 +257,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp2.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Notebook 15,6 Hp 250 G9 Intel Celeron 8 Gb Ram 256 Gb Ssd Color Negro</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="18">Añadir al carrito</button>
           </div>
         </div>
@@ -257,7 +265,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp3.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Notebook Hp 245 G10 R3 7330u 512gb Ssd 8gb Ram Windows 11 Ho</p>
-            <div class="price">3589000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="19">Añadir al carrito</button>
           </div>
         </div>
@@ -273,7 +281,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp5.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Hp 14-dq0520la Intel N4120 Quad Core 8gb 256gb 14 Plateado</p>
-            <div class="price">$1.150.000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="21">Añadir al carrito</button>
           </div>
         </div>
@@ -281,7 +289,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp6.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Portátil Hp 15-fc0012la Ryzen 7 7730u 32gb 512gb Fhd 15.6</p>
-            <div class="price">$3.899.000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="22">Añadir al carrito</button>
           </div>
         </div>
@@ -290,7 +298,7 @@
           <div class="product-info">
             <p class="product-text">Notebook Hp Victus 15-fa0033dx Intel Core I5 12450h Rtx 3050 8gb De Ram 512gb Ssd
               Gráficos Nvidia Geforce Rtx 3050 Windows 11 Home</p>
-            <div class="price">$3.499.000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="23">Añadir al carrito</button>
           </div>
         </div>
@@ -298,7 +306,7 @@
           <img src="../src/assets/img/portatiles/Hp/Hp8.jpg" alt="Acer">
           <div class="product-info">
             <p class="product-text">Hp Victus 15 I5 12va 16gb 512gbssd Rtx3050 4gb 15.6 Fhd W11 Color Negro</p>
-            <div class="price">$3.700.000</div>
+            <div class="price">$3.550.670</div>
             <button class="btn-add" type="button" data-id="24">Añadir al carrito</button>
           </div>
         </div>

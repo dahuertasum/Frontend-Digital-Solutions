@@ -18,6 +18,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  padding-top: 150px;
 }
 
 h1,
@@ -36,6 +37,11 @@ h3 {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* encima de todo */
 
   .mensajes {
     display: flex;
@@ -105,6 +111,11 @@ h3 {
   align-items: flex-start;
   background-color: #5D91A6;
   padding: 0.7%;
+  position: fixed;
+  top: 30px; /* ajusta según altura de la marquesina */
+  left: 0;
+  width: 100%;
+  z-index: 999;
 
   .telphones>b {
     /* font-size: 1.0rem; */
@@ -169,6 +180,13 @@ h3 {
   background: #F4F6F5;
   border-bottom: 1px solid #e5e7eb;
   gap: 2rem;
+  position: fixed;
+  top: 70px; /* ajusta según altura marquesina + pre-container */
+  left: 0;
+  width: 100%;
+  z-index: 998;
+  background-color: #F4F6F5; /* asegura fondo sólido al ser fixed */
+  border-bottom: 1px solid #e5e7eb;
 }
 
 /* LOGO */
@@ -194,24 +212,6 @@ h3 {
   padding: 10px 15px;
   border-radius: 20px;
   border: 1px solid #ddd;
-}
-
-/* NAV */
-.nav-principal {
-  display: flex;
-  gap: 1.8rem;
-}
-
-.nav-principal a {
-  text-decoration: none;
-  /* font-size: 0.95rem; */
-  font-weight: 500;
-  color: var(--text);
-  transition: 0.3s;
-}
-
-.nav-principal a:hover {
-  color: #45591B;
 }
 
 /* ACTIONS */
@@ -252,16 +252,6 @@ h3 {
 
 .outline:hover {
   background: #808C20;
-}
-
-
-.cart {
-  position: relative;
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: #808C20;
-  border: none;
-  width: 0px;
 }
 
 .msj {
@@ -431,6 +421,7 @@ section {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-hero.primari {
@@ -446,7 +437,7 @@ section {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-
+  cursor: pointer;
 }
 
 .buton.contac {
@@ -493,27 +484,6 @@ section {
   transition: 0.3s;
 }
 
-body.modo-contraste .actions {
-  color: black;
-}
-
-body.modo-contraste .product,
-body.modo-contraste .marquesina,
-body.modo-contraste .pre-container,
-body.modo-contraste .topbar,
-body.modo-contraste .hero-light,
-body.modo-contraste .marcas,
-body.modo-contraste .ecosistema {
-  background-color: #1e1e1e;
-  color: white;
-}
-
-body.modo-contraste {
-  --bg: #111;
-  --text: #ffffff;
-}
-
-/* PRODUCTOS */
 
 /* GRID PRODUCTOS */
 
@@ -538,7 +508,7 @@ body.modo-contraste {
   width: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(4, 1fr) ;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .product {
@@ -567,7 +537,7 @@ body.modo-contraste {
 .price {
   text-align: center;
   padding: 5px;
-  color: #2563eb;
+  color: #2F4017;
 }
 
 .btn-add {
@@ -784,7 +754,8 @@ body.modo-contraste {
 .eco-card:nth-child(3):hover {
   background: linear-gradient(135deg, #45591B, #808C20);
   color: white;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   /* transform: scale(1.05); */
 }
@@ -1047,265 +1018,184 @@ body.modo-contraste {
   transform: translateY(-3px);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-
-  .fondo-marca h3 {
-    font-size: 2rem;
-  }
-
-  .marcas-grid {
-    gap: 25px;
-  }
-
-  .trust {
-    gap: 30px;
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .footer {
-    text-align: center;
-  }
-
-  .footer-col h4::after {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-/* Media  QUERY */
-
-@media (max-width: 1200px) {
-
-  .hero-text h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-image {
-    width: 400px;
-    height: 300px;
-  }
-
-  .marcas-grid {
-    gap: 30px;
-  }
-
-}
-
-/* Media  QUERY Tablets Grande */
-@media (max-width: 992px) {
-
-  /* HERO */
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-right {
-    flex-direction: column;
-  }
-
-  .hero-image {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-  }
-
-  /* NAV */
-  .nav-principal {
-    gap: 1rem;
-    font-size: 0.85rem;
-  }
-
-  /* MARCAS */
-  .marcas-grid {
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-
-}
-
-/* Media  QUERY Tablets Vertical */
-@media (max-width: 768px) {
-
-  /* HEADER */
-  .topbar {
-    flex-direction: column;
-    gap: 15px;
-    padding: 1rem;
-  }
-
-  .nav-principal {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .actions {
-    justify-content: center;
-  }
-
-  .search-box input {
-    width: 250px;
-  }
-
-  /* HERO */
-  .hero-light {
-    padding: 120px 20px;
-  }
-
-  /* CONTACTO */
-  .contacto-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* ECOSISTEMA */
-  .ecosistema {
-    padding: 60px 30px;
-  }
-
-}
-
-/* Celular Grander */
-@media (max-width: 576px) {
-
-  section {
-    padding: 50px 20px;
-  }
-
-  .hero-text h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero-text p {
-    font-size: 0.95rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .btn-hero,
-  .buton {
-    width: 100%;
-    text-align: center;
-  }
-
-  .eco-card {
-    min-width: 90%;
-  }
-
-  .marcas-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-}
-
-/* Celular Pequño */
-@media (max-width: 400px) {
-
-  .hero-text h1 {
-    font-size: 1.5rem;
-  }
-
-  .logo {
-    width: 200px;
-  }
-
-  .search-box input {
-    width: 100%;
-  }
-
-}
-
-.slider {
-  scroll-snap-type: x mandatory;
-}
-
-.eco-card {
-  scroll-snap-align: start;
-}
-
-
-.caja {
-  display: none;
-
-}
-
-table {
+body.modo-contraste {
+  --bg: #111;
+  --text: #ffffff;
   background-color: var(--bg);
-  position: fixed;
-    top: 250px; /* debajo del header */
-    right: 10px;
-    background: white;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    padding: 15px;
-    transition: transform 0.4s ease;
-    z-index: 999;
+  color: var(--text);
+}
+
+body.modo-contraste section,
+body.modo-contraste .product,
+body.modo-contraste .marquesina,
+body.modo-contraste .pre-container,
+body.modo-contraste .topbar,
+body.modo-contraste .hero-light,
+body.modo-contraste .marcas,
+body.modo-contraste .ecosistema,
+body.modo-contraste .eco-card,
+body.modo-contraste table {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+body.modo-contraste .product {
+  background-color: #2a2a2a;
+}
+
+/* =========================================
+   🌙 MODO OSCURO PARA CARRITO
+========================================= */
+
+body.modo-contraste #caja {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.modo-contraste #caja thead th {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+body.modo-contraste #caja tbody tr:hover {
+  background-color: #2a2a2a;
+}
+
+body.modo-contraste .cont {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+body.modo-contraste .total {
+  color: #22c55e;
 }
 
 
-.message {
-  text-align: center;
-  padding: 20px; 
-  font-weight: bold;
-}
-
-table thead {
-  font-size: 15px;
-}
-
-.producto-cont {
-  text-align: center;
-  height: 100px;
-  width: 100px;
-  font-size: 15px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-delete {
-  border: none;
-  color: red;
-}
-
-.cont {
-  width: 40px;
-}
-
-table tr th {
-  padding: 5px;
-}
-
-table tr td {
-  width: 50px;
-  height: 50px;
-}
-
-.fa-solid {
+.cart {
   position: relative;
-  left: 40%;
-  padding: 5px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #808C20;
+  border: none;
+  width: 0px;
   cursor: pointer;
 }
 
 
-table tfoot {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 20px;
+#caja {
+  position: fixed;
+  top: 250px;
+  right: 20px;
+  width: 450px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  z-index: 999;
+  animation: slideIn 0.3s ease;
+
 }
 
+/* Animación suave */
+@keyframes slideIn {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Ocultar cuando tenga clase .caja */
+.caja {
+  display: none;
+}
+
+/* Tabla */
+#caja table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: slideIn 0.3s ease;
+}
+
+/* Encabezados */
+#caja thead th {
+  text-align: center;
+  padding: 10px;
+  background-color: #f4f6f5;
+  color: #2F4017;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Filas */
+#caja tbody tr {
+  transition: background 0.2s ease;
+}
+
+#caja tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Celdas */
+#caja td {
+  padding: 10px;
+  font-size: 11px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Imagen producto */
+.producto-cont {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: fill;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Input cantidad */
+.cont {
+  width: 55px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Botón eliminar */
+.fa-delete-left {
+  color: #dc2626;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.fa-delete-left:hover {
+  transform: scale(1.2);
+  color: #991b1b;
+}
+
+/* Total */
+.total {
+  font-weight: bold;
+  text-align: right;
+  font-size: 16px;
+  padding-top: 10px;
+  color: #2F4017;
+}
+
+.message {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
 
 .alerta {
   position: fixed;
@@ -1320,7 +1210,7 @@ table tfoot {
   justify-content: center;
   align-items: center;
   opacity: 1;
-  transition: opacity 0,5s ease;
+  transition: opacity 0, 5s ease;
 }
 
 .alerta.ocultar {

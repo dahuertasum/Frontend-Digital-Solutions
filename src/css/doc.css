@@ -71,11 +71,6 @@ body {
   transition: 0.3s;
 }
 
-body.modo-contraste {
-  --bg: black;
-  --text: black;
-}
-
 
 /* ===== LOGO ===== */
 .logo {
@@ -136,4 +131,17 @@ footer {
     /* font-size: 14px; */
     text-align: center;
     color: #666;
+}
+
+body.modo-contraste {
+  --bg: #111;
+  --text: #ffffff;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+
+body.modo-contraste * {
+  background-color: #1e1e1e;
+  color: white;
 }

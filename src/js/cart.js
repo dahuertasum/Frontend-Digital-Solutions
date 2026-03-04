@@ -1,6 +1,10 @@
 // CARRITO DE COMPRAS
 
-let productsArray = [];
+let productsArray = JSON.parse(localStorage.getItem('cart')) || [];
+
+function saveLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(productsArray));
+}
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -18,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (productos) {
         productos.addEventListener('click', getDataElements);
     }
+    productsHtml();
+    updateCartCount();
+    updateTotal();
 });
 
 
@@ -45,10 +52,18 @@ function getDataElements(event) {
 }
 
 function selectData(product) {
+    const priceText = product.querySelector('.price').textContent;
+
+    const cleanPrice = priceText
+        .replace(/\$/g, '')
+        .replace(/\./g, '')
+        .replace(/,/g, '')
+        .trim();
+
     const productObj = {
         img: product.querySelector('img').src,
         title: product.querySelector('p').textContent,
-        price: parseFloat(product.querySelector('.price').textContent.replace('$', '')),
+        price: parseInt(cleanPrice, 10),
         id: parseInt(product.querySelector('button[type="button"]').dataset.id, 10),
         quantity: 1
     }
@@ -65,6 +80,7 @@ function selectData(product) {
     productsHtml();
     updateCartCount();
     updateTotal();
+    saveLocalStorage();
 }
 
 function productsHtml() {
@@ -130,6 +146,7 @@ function productsHtml() {
 
             // Filtramos el array quitando el producto
             productsArray = productsArray.filter(prod => prod.id != productId);
+            saveLocalStorage();
 
             // Volvemos a pintar el carrito
             productsHtml();
@@ -153,6 +170,7 @@ function updateQuantity(e) {
     const product = productsArray.find(prod => prod.id === idProd);
     if (product && newQuantity > 0) {
         product.quantity = newQuantity;
+        saveLocalStorage();
     }
     productsHtml();
     updateTotal();
