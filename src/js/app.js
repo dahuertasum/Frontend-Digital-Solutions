@@ -1,103 +1,75 @@
-// (function () {
+(function () {
 
-//   document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
+    cargarProductos();
+  });
 
-//     // ===============================
-//     // PRODUCTOS
-//     // ===============================
-//     let productosGlobal = [];
-//     const contenedor = document.getElementById('productos');
+  let productosGlobal = [];
 
-//     if (contenedor) {
-//       fetch('../src/data/productos.json')
-//         .then(response => response.json())
-//         .then(productos => {
-//           productosGlobal = productos;
-//           renderProductos(productosGlobal);
-//         })
-//         .catch(error => {
-//           console.error('Error cargando productos:', error);
-//         });
-//     }
+  async function cargarProductos() {
+    try {
+      const response = await fetch("../src/data/productos.json");
+      const data = await response.json();
 
-//     function renderProductos(lista) { 
+      productosGlobal = data;
+      renderProductos(data);
 
+    } catch (error) {
+      console.error("Error cargando productos:", error);
+    }
+  }
 
-//       lista.forEach(producto => {
-//         const article = document.createElement('article');
+  function renderProductos(productos) {
 
-//         let precioHTML = '';
-//         if (producto.oferta) {
-//           precioHTML = `
-//             <p><del>$${producto.precio.toLocaleString()}</del></p>
-//             <p><strong>$${producto.precioDescuento.toLocaleString()}</strong></p>
-//           `;
-//         } else {
-//           precioHTML = `<p>$${producto.precio.toLocaleString()}</p>`;
-//         }
+    const container = document.getElementById("productsContainer");
+    container.innerHTML = "";
 
-//         article.innerHTML = `
-//           <div class="img-container">
-//             <img 
-//               src="../src/assets/img/${producto.imagenes.front}" 
-//               data-front="../src/assets/img/${producto.imagenes.front}"
-//               data-back="../src/assets/img/${producto.imagenes.back}"
-//               alt="${producto.nombre}"
-//               class="producto-img"
-//             >
-//           </div>
+    productos.forEach(producto => {
 
-//           <p>${producto.nombre}</p>
-//           ${precioHTML}
-//           <button class='btn-add'>Añadir al carrito</button>
-//         `;
+      const precioFinal = producto.precioDescuento || producto.precio;
 
-//         const img = article.querySelector('.producto-img');
-//         img.addEventListener('mouseenter', () => img.src = img.dataset.back);
-//         img.addEventListener('mouseleave', () => img.src = img.dataset.front);
+      const div = document.createElement("div");
+      div.classList.add("product");
 
-//         contenedor.appendChild(article);
-//       });
-//     }
+      div.setAttribute("data-brand", producto.marca);
+      div.setAttribute("data-price", precioFinal);
 
-//     // ===============================
-//     // FILTRO POR MARCA
-//     // ===============================
-//     const botonesMarca = document.querySelectorAll('.marca-btn');
+      div.innerHTML = `
+  <div class="product-image-container">
+    <img 
+      src="../src/assets/img/${producto.imagenes.front}" 
+      alt="${producto.nombre}"
+      class="front"
+    >
+    <img 
+      src="../src/assets/img/${producto.imagenes.back}" 
+      alt="${producto.nombre}"
+      class="back"
+    >
+  </div>
 
-//     if (botonesMarca.length > 0) {
-//       botonesMarca.forEach(btn => {
-//         btn.addEventListener('click', () => {
-//           botonesMarca.forEach(b => b.classList.remove('active'));
-//           btn.classList.add('active');
+  <div class="product-info">
+    <p class="product-text">${producto.nombre}</p>
+    <div class="price">
+      ${producto.oferta
+          ? `
+          <span class="price-old">$${producto.precio.toLocaleString("es-CO")}</span>
+          <span class="price-new">$${producto.precioDescuento.toLocaleString("es-CO")}</span>
+        `
+          : `<span class="price-new">$${producto.precio.toLocaleString("es-CO")}</span>`
+        }
+    </div>
+    <button class="btn-add" type="button" data-id="${producto.id}">Añadir al carrito</button>
+  </div>
+`;
 
-//           const marca = btn.dataset.marca;
-//           const filtrados = productosGlobal.filter(p => p.marca === marca);
-//           renderProductos(filtrados);
-//         });
-//       });
-//     }
+      container.appendChild(div);
 
-//     // ===============================
-//     // SLIDER ECOSISTEMA
-//     // ===============================
-//     const slider = document.getElementById('slider');
-//     const next = document.getElementById('next');
-//     const prev = document.getElementById('prev');
+    });
 
-//     if (slider && next && prev) {
-//       next.addEventListener('click', () => {
-//         slider.scrollLeft += 300;
-//       });
+  }
 
-//       prev.addEventListener('click', () => {
-//         slider.scrollLeft -= 300;
-//       });
-//     }
-
-//   });
-
-// })();
+})();
 
 // ACCESIBILIDAD
 
@@ -157,6 +129,7 @@
   }
 })()
 
+
 //Login 
 const form = document.querySelector("form")
 
@@ -186,4 +159,47 @@ const data = await response.json()
 alert(data.message)
 
 })
+
+const searchInput = document.getElementById("searchInput");
+const brandFilter = document.getElementById("brandFilter");
+const priceFilter = document.getElementById("priceFilter");
+
+function filterProducts() {
+  const products = document.querySelectorAll(".product"); // <- se actualiza cada vez
+  const searchText = searchInput.value.toLowerCase();
+  const selectedBrand = brandFilter.value;
+  const selectedPrice = priceFilter.value;
+
+  products.forEach(product => {
+    const name = product.querySelector(".product-text").textContent.toLowerCase();
+    const brand = product.getAttribute("data-brand");
+    const price = parseFloat(product.getAttribute("data-price"));
+
+    let show = true;
+
+    // Filtro por texto
+    if (!name.includes(searchText)) show = false;
+
+    // Filtro por marca
+    if (selectedBrand && brand !== selectedBrand) show = false;
+
+    // Filtro por precio
+    if (selectedPrice) {
+      if (selectedPrice.includes("-")) {
+        const [min, max] = selectedPrice.split("-").map(Number);
+        if (price < min || price > max) show = false;
+      } else {
+        if (price < Number(selectedPrice)) show = false;
+      }
+    }
+
+    product.style.display = show ? "block" : "none";
+  });
+}
+
+// Eventos
+searchInput.addEventListener("input", filterProducts);
+brandFilter.addEventListener("change", filterProducts);
+priceFilter.addEventListener("change", filterProducts);
+
 
