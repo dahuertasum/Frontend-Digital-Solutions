@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Venta de tecnología reacondicionada certificada en Colombia. Equipos con garantía real y envío a todo el país.">
+  <meta name="keywords" content="tecnología reacondicionada, laptops usadas, equipos certificados, Colombia, garantía">
+  <meta name="author" content="Digital Solutions">
   <link rel="stylesheet" href="../src/css/style.css">
+  <link rel="icon" href="../src/assets/img/logos/logo.png">
   <title>Digital Solution</title>
 </head>
 
@@ -17,7 +22,7 @@
       <div class="mensaje">🚚 Envío gratis en compras mayores a $500.000</div>
     </div>
   </section>
-  <section class="pre-container">
+  <div class="pre-container">
     <div class="telphones">
       <b>📞 +57 317 381 6078 | ✉ soporte@digitalsolutions.com</b>
     </div>
@@ -45,16 +50,11 @@
         </li>
       </ul>
     </div>
-  </section>
-
+  </div>
 
   <header class="topbar">
     <div class="logo-container">
       <a href="index.html"><img class="logo" src="../src/assets/img/logos/logo.png" alt="Certificado"></a>
-    </div>
-
-    <div class="search-box">
-      <input type="text" placeholder="Buscar productos...">
     </div>
     <nav class="nav-principal">
       <a href="../public/index.html">Inicio</a>
@@ -68,7 +68,7 @@
     <div class="actions">
       <a class="btn primary" href="../public/login.html">Iniciar sesión</a>
       <a class="btn outline" href="../public/registro.html">Regístrate</a>
-      <button id="cart" type="button" class="cart">
+      <button id="cart" type="button" class="cart" aria-label="Abrir carrito">
         <i class="fa-solid fa-cart-arrow-down"></i>
       </button>
       <span id="cartCount">0</span>
@@ -85,7 +85,7 @@
           </thead>
           <tbody id="contentProducts">
             <tr>
-              <td class="msj">No hay productos agregados</td>
+              <td colspan="5">No hay productos agregados</td>
             </tr>
           </tbody>
           <tfoot>
@@ -121,7 +121,7 @@
         </p>
 
         <div class="hero-buttons">
-          <a class="btn-hero primari">Conocer más</a>
+          <a class="btn-hero primary">Conocer más</a>
           <a class="buton contac">Contáctanos</a>
         </div>
       </div>
@@ -143,23 +143,18 @@
       </div>
     </div>
     <div class="botones-accesibilidad">
-      <button id="aumentarFuente">A+</button>
-      <button id="disminuirFuente">A-</button>
-      <button id="contraste">🌙</button>
+      <button id="aumentarFuente" aria-label="Aumentar tamaño de fuente">A+</button>
+      <button id="disminuirFuente" aria-label="Disminuir tamaño de fuente">A-</button>
+      <button id="contraste" aria-label="Cambiar modo contraste">🌙</button>
     </div>
   </section>
 
 
   <!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
   <section class="ecosistema" id="ecosistema">
-    <h2>Por que elegirnos</h2>
-    <p>
-      Garantizados calidad seguridad y compromiso ambiental
-    </p>
-
+    <h2>¿Por qué elegirnos?</h2>
+    <p>Garantizamos calidad, seguridad y compromiso ambiental.</p>
     <div class="slider-wrapper">
-
-
       <div class="slider" id="slider">
         <!-- TUS CARDS EXISTENTES -->
         <div class="eco-card">
@@ -195,7 +190,7 @@
             <div class="">
               <img class="logo-precio" src="../src/assets/img/logos/candado.png" alt="Certificado">
             </div>
-            <p>Proteccion de datos y pagos confiables.</p>
+            <p>Protección de datos y pagos confiables.</p>
           </div>
         </div>
       </div>
