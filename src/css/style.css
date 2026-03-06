@@ -602,6 +602,57 @@ section {
   transition: 0.3s;
 }
 
+.nosotros {
+  background: #ffffff;
+  padding: 80px 5%;
+}
+
+.nosotros-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.nosotros-texto h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.nosotros-texto p {
+  margin-bottom: 20px;
+  color: #45591B;
+  line-height: 1.6;
+}
+
+.nosotros-imagen {
+  display: flex;
+  justify-content: center;
+}
+
+.nosotros-imagen img {
+  width: 300px;
+  max-width: 100%;
+}
+
+.nosotros-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.nosotros-stats h3 {
+  color: #808C20;
+  font-size: 2rem;
+}
+
+.nosotros-stats p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
 
 /* GRID PRODUCTOS */
 
