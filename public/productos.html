@@ -54,17 +54,17 @@
 
     </div>
     <nav class="nav-principal">
-      <a href="../public/index.html">Inicio</a>
-      <a href="../public/index.html">Nosotros</a>
-      <a href="../public/productos.html">Productos</a>
-      <a href="../public/index.html">Garantía</a>
-      <a href="#">Contacto</a>
+      <a href="index.html">Inicio</a>
+      <a href="index.html">Nosotros</a>
+      <a href="productos.html">Productos</a>
+      <a href="index.html">Garantía</a>
+      <a href="contacto.html">Contacto</a>
       <a href="documentacion.html">Documentación</a>
     </nav>
 
     <div class="actions">
-      <a href="../public/login.html" class="btn primary">Iniciar sesión</a>
-      <a href="../public/registro.html" class="btn outline">Regístrate</a>
+      <a href="login.html" class="btn primary">Iniciar sesión</a>
+      <a href="registro.html" class="btn outline">Regístrate</a>
       <button id="cart" type="button" class="cart">
         <i class="fa-solid fa-cart-arrow-down"></i>
       </button>
@@ -81,9 +81,7 @@
             </tr>
           </thead>
           <tbody id="contentProducts">
-            <tr>
-              <td colspan="5">No hay productos agregados</td>
-            </tr>
+            
           </tbody>
           <tfoot>
             <tr>
@@ -105,7 +103,7 @@
   </header>
 
   <!-- CONTENEDOR DE PRODUCTOS (JS ENTRA AQUÍ) -->
-    <main>
+  <main>
     <h2 class="product-title">Nuestros Productos</h2>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Buscar productos..." aria-label="Buscar productos">
@@ -125,7 +123,7 @@
         <option value="2000000-4000000">$2.000.000 - $4.000.000</option>
         <option value="4000000">Más de $4.000.000</option>
       </select>
-      
+
     </div>
     <section class="products" id="productos">
       <article class="products-grid container" id="productsContainer">
@@ -138,35 +136,80 @@
 
 
   <div class="botones-accesibilidad">
-    <button id="aumentarFuente">A+</button>
-    <button id="disminuirFuente">A-</button>
-    <button id="contraste">🌙</button>
+    <button id="aumentarFuente" aria-label="Aumentar tamaño de fuente">A+</button>
+    <button id="disminuirFuente" aria-label="Disminuir tamaño de fuente">A-</button>
+    <button id="contraste" aria-label="Cambiar modo contraste">🌙</button>
   </div>
 
   <footer class="footer">
+
     <div class="footer-container">
+
+      <!-- Empresa -->
       <div class="footer-col">
         <h4>Digital Solutions</h4>
         <p>Tecnología reacondicionada con impacto positivo.</p>
+
+        <div class="social-footer">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
       </div>
 
+      <!-- Enlaces -->
       <div class="footer-col">
         <h4>Enlaces</h4>
         <ul>
-          <li><a href="../public/productos.html">Productos</a></li>
-          <li><a href="../public/index.html">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
         </ul>
       </div>
 
+      <!-- Soporte -->
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Garantía</a></li>
+          <li><a href="#">Devoluciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
       <div class="footer-col">
         <h4>Contacto</h4>
-        <p>soporte@digitalsolutions.com</p>
-        <p>+57 300 000 0000</p>
+        <p>📧 soporte@digitalsolutions.com</p>
+        <p>📞 +57 300 000 0000</p>
+        <p>📍 Bogotá, Colombia</p>
+        <p>🕒 Lun - Vie 9:00 AM - 6:00 PM</p>
       </div>
+
     </div>
 
-    <p class="footer-bottom">© 2026 - Digital Solutions</p>
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+
+      <h4>Suscríbete</h4>
+      <p>Recibe ofertas y novedades</p>
+
+      <form class="newsletter-form">
+        <input type="email" placeholder="Tu correo electrónico">
+        <button type="submit">Suscribirse</button>
+      </form>
+
+    </div>
+
+    <p class="footer-bottom">
+      © 2026 - Digital Solutions | Todos los derechos reservados
+    </p>
+
   </footer>
 
   <script src="../src/js/app.js"></script>

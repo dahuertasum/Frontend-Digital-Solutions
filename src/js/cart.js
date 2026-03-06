@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const btn = document.querySelector('#cart');
     const caja = document.querySelector('#caja');
     const productos = document.querySelector('#productos');
-    const contentProducts = document.querySelector('#contentProducts');
+    let contentProducts = document.querySelector('#contentProducts');
 
     if (btn && caja && contentProducts) {
         btn.addEventListener('click', () => {
@@ -31,7 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateCartCount() {
     const cartCount = document.querySelector('#cartCount');
-    cartCount.textContent = productsArray.length;
+    if (!cartCount) return;
+
+    const totalItems = productsArray.reduce(
+        (total, prod) => total + prod.quantity,
+        0
+    );
+
+    cartCount.textContent = totalItems;
 }
 
 function updateTotal() {
@@ -71,12 +78,12 @@ function selectData(product) {
     const exists = productsArray.some(prod => prod.id === productObj.id);
 
     if (exists) {
-        showAlert('El producto ya existe en el carrito', 'error');
+        showAlert('❌ El producto ya existe en el carrito', 'error');
         return;
     }
 
     productsArray = [...productsArray, productObj];
-    showAlert('✅ Producto agregado correctamente', 'sucess');
+    showAlert('✅ Producto agregado correctamente', 'success');
     productsHtml();
     updateCartCount();
     updateTotal();
@@ -91,7 +98,7 @@ function productsHtml() {
         contentProducts.innerHTML = `
         <tr>
             <td class="message" colspan="5">
-                 No hay productos agregados
+                 🛒 Tu carrito está vacío
             </td>
         </tr>
     `;
@@ -120,7 +127,11 @@ function productsHtml() {
         const tdPrice = document.createElement('td');
         const prodPrice = document.createElement('p');
         const priceNumber = Number(price);
-        prodPrice.textContent = priceNumber.toLocaleString('es-CO');
+        prodPrice.textContent = priceNumber.toLocaleString('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+        });
         prodPrice.className = 'producto-cont';
         tdPrice.appendChild(prodPrice);
 

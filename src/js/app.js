@@ -133,30 +133,30 @@
 //Login 
 const form = document.querySelector("form")
 
-form.addEventListener("submit", async (e)=>{
+form.addEventListener("submit", async (e) => {
 
-e.preventDefault()
+  e.preventDefault()
 
-const email = document.getElementById("email").value
-const password = document.getElementById("password").value
+  const email = document.getElementById("email").value
+  const password = document.getElementById("password").value
 
-const response = await fetch("http://127.0.0.1:5000/login",{
+  const response = await fetch("http://127.0.0.1:5000/login", {
 
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
 
-body: JSON.stringify({
-email:email,
-password:password
-})
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
 
-})
+  })
 
-const data = await response.json()
+  const data = await response.json()
 
-alert(data.message)
+  alert(data.message)
 
 })
 
@@ -201,5 +201,4 @@ function filterProducts() {
 searchInput.addEventListener("input", filterProducts);
 brandFilter.addEventListener("change", filterProducts);
 priceFilter.addEventListener("change", filterProducts);
-
 

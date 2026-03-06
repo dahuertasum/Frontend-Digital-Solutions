@@ -407,14 +407,6 @@ h3 {
   background: #808C20;
 }
 
-.msj {
-  position: absolute;
-  left: 100px;
-  top: 60px;
-  width: 300px;
-  font-weight: bold;
-}
-
 .badge {
   position: absolute;
   top: -6px;
@@ -425,7 +417,6 @@ h3 {
   border-radius: 50%;
   padding: 2px 6px;
 }
-
 
 
 /* SECCIONES */
@@ -576,14 +567,14 @@ section {
   border: none;
 }
 
-.btn-hero.primari,
+.btn-hero.primary,
 .buton.contac {
   background-color: var(--primary);
   color: #fff;
 }
 
 /* hover */
-.btn-hero.primari:hover,
+.btn-hero.primary:hover,
 .buton.contac:hover {
   background-color: #45591b9e;
   transform: translateY(-3px);
@@ -766,33 +757,95 @@ section {
 }
 
 /* CONTACTO */
-#contacto form {
-  max-width: 400px;
+/* =====================================
+   CONTACTO
+===================================== */
+
+.contact-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #A3D3D9, #E6F2E7);
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-#contacto input,
-#contacto textarea {
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
+.contact-card {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
-#contacto button {
-  padding: 10px;
-  background-color: #00b4d8;
+.contact-card h2 {
+  color: #2F4017;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  color: #45591B;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  color: #2F4017;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.input-group textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #808C20;
+  box-shadow: 0 0 0 3px rgba(128, 140, 32, 0.2);
+}
+
+.btn-contact {
+  width: 100%;
+  padding: 14px;
+  background: #45591B;
+  color: white;
   border: none;
+  border-radius: 30px;
+  font-weight: bold;
   cursor: pointer;
-  color: #000;
-  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-contact:hover {
+  background: #808C20;
+  transform: translateY(-2px);
 }
 
 /* FOOTER */
 /* ===== FONDO GENERAL DE LA SECCIÓN ===== */
 .footer {
-  padding: 60px 5%;
+  padding: 30px 5%;
+  /* antes 60px */
   background: linear-gradient(135deg, #2F4017, #2F4017, #2c5364);
   color: white;
 }
@@ -801,83 +854,149 @@ section {
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 50px;
-  border-radius: 25px;
+  padding: 30px;
+  /* antes 50px */
+  border-radius: 20px;
 
-  /* EFECTO VIDRIO */
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 
-  color: white;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  /* antes 40px */
 }
 
-/* ===== TITULOS ===== */
+/* TITULOS */
 .footer-container h3,
 .footer-container h4 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 600;
+  font-size: 1rem;
 }
 
-/* ===== TEXTOS ===== */
+/* TEXTOS */
 .footer-container p {
   opacity: 0.85;
-  line-height: 1.6;
+  line-height: 1.4;
+  font-size: 0.9rem;
 }
 
-/* ===== LISTA ===== */
+/* LISTA */
 .footer-container ul {
   list-style: none;
   padding: 0;
 }
 
 .footer-container ul li {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .footer-container ul li a {
   text-decoration: none;
   color: #fff;
   opacity: 0.8;
+  font-size: 0.9rem;
   transition: 0.3s ease;
 }
 
-/* Hover elegante */
 .footer-container ul li a:hover {
   opacity: 1;
-  padding-left: 6px;
+  padding-left: 4px;
 }
 
-/* ===== PARTE INFERIOR ===== */
+/* PARTE INFERIOR */
 .footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  padding: 60px;
+  margin-top: 20px;
+  /* antes 40px */
+  padding: 20px 0;
+  /* antes 60px */
   text-align: center;
   color: white;
   opacity: 0.7;
-  /* font-size: 0.9rem; */
+  font-size: 0.85rem;
 }
 
-
-/* Aca Termina el Footer */
+/* Logo */
 .img-container {
   width: 100%;
-  height: 180px;
+  height: 120px;
+  /* antes 180px */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
+/* Redes sociales */
+.social-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-footer a {
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.social-footer a:hover {
+  transform: scale(1.2);
+  color: #22c55e;
+}
+
+/* Newsletter */
+
+.footer-newsletter {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  width: 200px;
+}
+
+.newsletter-form button {
+  background: #808C20;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Métodos de pago */
+
+.footer-payments {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-payments img {
+  height: 24px;
+  /* antes 30px */
+  opacity: 0.8;
+}
 
 /* Ecosistemas */
 .ecosistema {
@@ -1013,6 +1132,49 @@ section {
 
 .slider-btn.right {
   right: -22px;
+}
+
+/* IMPACTO */
+
+.impacto {
+  background: #f5f7f2;
+  text-align: center;
+  padding: 80px 5%;
+}
+
+.impacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.impacto-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* PROCESO */
+
+.proceso {
+  text-align: center;
+  padding: 80px 5%;
+}
+
+.proceso-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.proceso-step {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #eee;
 }
 
 /* ===== SECCIÓN PRINCIPAL ===== */
@@ -1519,7 +1681,10 @@ body.modo-contraste .topbar,
 body.modo-contraste .hero-light,
 body.modo-contraste .marcas,
 body.modo-contraste .ecosistema,
-body.modo-contraste .eco-card {
+body.modo-contraste .eco-card,
+body.modo-contraste .contact-card,
+body.modo-contraste .impacto-card,
+body.modo-contraste .proceso-step {
   background-color: #1e1e1e;
   color: white;
 }
@@ -1638,13 +1803,18 @@ body.modo-contraste .total {
   .actions {
     order: 2;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
+  }
+
+  .actions span {
+    position: absolute;
+    left: 88%;
   }
 
   /* Hero */
   .hero-light {
-    padding: 60px 5%;
-    min-height: auto;
+    background-image: none;
+    background-color: #45591B;
   }
 
   .hero-grid {
@@ -1714,8 +1884,28 @@ body.modo-contraste .total {
     top: 30px;
   }
 
+  main {
+    margin-top: 70%;
+  }
+
+  .product-title {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
   .topbar {
     top: 70px;
+  }
+
+  .logo {
+    margin-top: 5%;
+  }
+
+  .nav-principal {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   body {
@@ -1737,8 +1927,38 @@ body.modo-contraste .total {
     /* 1 columna */
   }
 
+  .hero-light {
+    margin-top: 20%;
+    background-image: none;
+    background-color: #45591B;
+  }
+
   .hero-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-image {
+    height: 200px;
+  }
+
+  .hero-badge {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .badge-icon {
+    width: 35px;
+    height: 35px;
   }
 
   .login-section,
