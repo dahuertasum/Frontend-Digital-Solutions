@@ -2142,6 +2142,7 @@ background:#2F4017;
 
   #caja {
     right: 50px;
+    width: 300px;
   }
 
   .slider {
@@ -2188,5 +2189,8 @@ background:#2F4017;
     min-height: auto;
     padding-top: 50%;
     padding-bottom: 60px;
+  }
+  .container-doc {
+    width: auto;
   }
 }
