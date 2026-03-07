@@ -22,6 +22,7 @@
   function renderProductos(productos) {
 
     const container = document.getElementById("productsContainer");
+    if (!container) return;
     container.innerHTML = "";
 
     productos.forEach(producto => {
@@ -131,38 +132,49 @@
 
 
 //Login 
-const form = document.querySelector("form")
+// const form = document.querySelector("form")
 
-form.addEventListener("submit", async (e) => {
+// form.addEventListener("submit", async (e) => {
 
-  e.preventDefault()
+//   e.preventDefault()
 
-  const email = document.getElementById("email").value
-  const password = document.getElementById("password").value
+//   const email = document.getElementById("email").value
+//   const password = document.getElementById("password").value
 
-  const response = await fetch("http://127.0.0.1:5000/login", {
+//   const response = await fetch("http://127.0.0.1:5000/login", {
 
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
 
-    body: JSON.stringify({
-      email: email,
-      password: password
-    })
+//     body: JSON.stringify({
+//       email: email,
+//       password: password
+//     })
 
-  })
+//   })
 
-  const data = await response.json()
+//   const data = await response.json()
 
-  alert(data.message)
+//   alert(data.message)
 
-})
+// });
 
 const searchInput = document.getElementById("searchInput");
 const brandFilter = document.getElementById("brandFilter");
 const priceFilter = document.getElementById("priceFilter");
+
+if (searchInput) {
+  searchInput.addEventListener("input", filterProducts);
+}
+if (brandFilter) {
+  brandFilter.addEventListener("change", filterProducts);
+}
+
+if (priceFilter) {
+  priceFilter.addEventListener("change", filterProducts);
+}
 
 function filterProducts() {
   const products = document.querySelectorAll(".product"); // <- se actualiza cada vez
@@ -197,8 +209,132 @@ function filterProducts() {
   });
 }
 
-// Eventos
-searchInput.addEventListener("input", filterProducts);
-brandFilter.addEventListener("change", filterProducts);
-priceFilter.addEventListener("change", filterProducts);
+//LOGIN
 
+const form = document.getElementById("loginForm");
+
+if (form) {
+
+  form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const errorEmail = document.getElementById("errorEmail");
+    const errorPassword = document.getElementById("errorPassword");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+    let valid = true;
+
+    if (!emailRegex.test(email)) {
+      errorEmail.textContent = "Correo inválido";
+      valid = false;
+    } else {
+      errorEmail.textContent = "";
+    }
+
+    if (!passwordRegex.test(password)) {
+      errorPassword.textContent =
+        "Debe tener 8 caracteres, una mayúscula y un número";
+      valid = false;
+    } else {
+      errorPassword.textContent = "";
+    }
+
+    if (valid) {
+      alert("Login correcto");
+    }
+
+  });
+
+};
+
+// REGISTRAR
+
+const registerForm = document.getElementById("registerForm");
+
+if (registerForm) {
+
+  registerForm.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("emailRegistro").value.trim();
+    const password = document.getElementById("passwordRegistro").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    const errorNombre = document.getElementById("errorNombre");
+    const errorEmail = document.getElementById("errorEmailRegistro");
+    const errorPassword = document.getElementById("errorPasswordRegistro");
+    const errorConfirm = document.getElementById("errorConfirmPassword");
+
+    const nombreRegex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,50}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+    let valid = true;
+
+    // VALIDAR NOMBRE
+    if (!nombreRegex.test(nombre)) {
+      errorNombre.textContent = "Nombre inválido (solo letras)";
+      valid = false;
+    } else {
+      errorNombre.textContent = "";
+    }
+
+    // VALIDAR EMAIL
+    if (!emailRegex.test(email)) {
+      errorEmail.textContent = "Correo electrónico inválido";
+      valid = false;
+    } else {
+      errorEmail.textContent = "";
+    }
+
+    // VALIDAR PASSWORD
+    if (!passwordRegex.test(password)) {
+      errorPassword.textContent =
+        "Debe tener 8 caracteres, mayúscula, minúscula y número";
+      valid = false;
+    } else {
+      errorPassword.textContent = "";
+    }
+
+    // VALIDAR CONFIRMACION
+    if (password !== confirmPassword) {
+      errorConfirm.textContent = "Las contraseñas no coinciden";
+      valid = false;
+    } else {
+      errorConfirm.textContent = "";
+    }
+
+    if (valid) {
+      alert("Registro exitoso 🚀");
+      registerForm.submit();
+    }
+
+  });
+
+};
+
+// PASSWORD VISIBILITY
+
+document.querySelectorAll(".togglePassword").forEach(icon => {
+
+  icon.addEventListener("click", () => {
+
+    const input = icon.previousElementSibling;
+
+    const type = input.type === "password" ? "text" : "password";
+
+    input.type = type;
+
+    icon.classList.toggle("fa-eye-slash");
+
+  });
+
+});

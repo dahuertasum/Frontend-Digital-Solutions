@@ -111,17 +111,22 @@
       <h2>Iniciar sesión</h2>
       <p>Accede a tu cuenta para continuar</p>
 
-      <form>
+      <form id="loginForm">
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="correo@ejemplo.com" required>
+          <input id="email" type="email" placeholder="correo@ejemplo.com" required>
+          <small id="errorEmail"></small>
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••" required>
+          <div class="password-container">
+            <input type="password" id="password" placeholder="••••••••" required>
+            <i class="fa-solid fa-eye togglePassword"></i>
+          </div>
+          <small id="errorPassword"></small>
         </div>
-        <small id="errorPassword"></small>
+        
         <button type="submit" class="btn-login">
           Iniciar sesión
         </button>

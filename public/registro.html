@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../src/css/style.css">
-  <link rel="stylesheet" href="../src/css/login.css">
   <title>Digital Solution</title>
 </head>
 
@@ -111,26 +110,42 @@
       <h2>Crear cuenta</h2>
       <p>Únete a Digital Solutions</p>
 
-      <form>
+      <form id="registerForm">
 
         <div class="input-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Juan Pérez" required>
+          <input type="text" id="nombre" placeholder="Juan Pérez" required>
+          <small id="errorNombre"></small>
         </div>
 
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="correo@ejemplo.com" required>
+          <input type="email" id="emailRegistro" placeholder="correo@ejemplo.com" required>
+          <small id="errorEmailRegistro"></small>
         </div>
 
-        <div class="input-group">
+        <div class="input-group password-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••" required>
-        </div>
 
-        <div class="input-group">
+          <div class="password-container">
+            <input type="password" id="passwordRegistro" placeholder="••••••••" required>
+
+            <i class="fa-solid fa-eye togglePassword" id="togglePassword"></i>
+          </div>
+
+          <small id="errorPasswordRegistro"></small>
+        </div>>
+
+        <div class="input-group password-group">
           <label>Confirmar contraseña</label>
-          <input type="password" placeholder="••••••••" required>
+
+          <div class="password-container">
+            <input type="password" id="confirmPassword" placeholder="••••••••" required>
+
+            <i class="fa-solid fa-eye togglePassword" id="toggleConfirmPassword"></i>
+          </div>
+
+          <small id="errorConfirmPassword"></small>
         </div>
 
         <button type="submit" class="btn-register">

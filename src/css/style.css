@@ -1451,6 +1451,33 @@ section {
   box-shadow: 0 0 0 3px rgba(128, 140, 32, 0.2);
 }
 
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+small {
+  color: red;
+  font-size: 12px;
+}
+
+input.error {
+  border: 2px solid red;
+}
+
 .btn-login {
   width: 100%;
   padding: 14px;
