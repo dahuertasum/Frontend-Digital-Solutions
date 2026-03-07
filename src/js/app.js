@@ -280,7 +280,7 @@ if (loginForm) {
         if(data.token){
           localStorage.setItem("token", data.token)
           alert("Login exitoso")
-          window.location.href="productos.html"
+          window.location.href="dashboard.html"
         }
 
       } catch (error) {
@@ -410,3 +410,143 @@ document.querySelectorAll(".togglePassword").forEach(icon => {
   });
 
 });
+/* ======================================================
+   Salir panel Admin
+======================================================*/
+function logoutAdmin(){
+
+localStorage.removeItem("token")
+
+window.location.href="login.html"
+
+}
+
+/* ======================================================
+   Usuarios
+======================================================*/
+const token = localStorage.getItem("token")
+
+fetch("http://127.0.0.1:5000/usuarios",{
+
+headers:{
+"Authorization":"Bearer " + token
+}
+
+})
+.then(res=>res.json())
+.then(data=>{
+
+const tbody = document.querySelector("#tablaUsuarios tbody")
+
+// contadores
+let totalUsuarios = 0
+let totalAdmins = 0
+let totalClientes = 0
+
+data.forEach(user=>{
+
+const tr = document.createElement("tr")
+
+const rolTexto = user.rol === "admin" ? "Administrador" : "Cliente"
+
+// contar usuarios
+totalUsuarios++
+
+if(user.rol === "admin"){
+totalAdmins++
+}else{
+totalClientes++
+}
+
+tr.innerHTML = `
+<td>${user.id}</td>
+<td>${user.nombre}</td>
+<td>${user.email}</td>
+<td>${rolTexto}</td>
+<td class="admin-actions">
+
+<button class="btn-edit" onclick="editarUsuario(${user.id}, '${user.nombre}', '${user.email}', '${user.rol}')">
+Editar
+</button>
+
+<button class="btn-delete" onclick="eliminarUsuario(${user.id})">
+Eliminar
+</button>
+
+</td>
+`
+
+tbody.appendChild(tr)
+
+})
+
+// actualizar tarjetas
+
+document.getElementById("totalUsuarios").textContent = totalUsuarios
+document.getElementById("totalAdmins").textContent = totalAdmins
+document.getElementById("totalClientes").textContent = totalClientes
+
+})
+
+
+/* ======================================================
+   Eliminar Usuarios
+======================================================*/
+
+function eliminarUsuario(id){
+
+const token = localStorage.getItem("token")
+
+fetch(`http://127.0.0.1:5000/usuarios/${id}`,{
+
+method:"DELETE",
+
+headers:{
+"Authorization":"Bearer " + token
+}
+
+})
+.then(res=>res.json())
+.then(data=>{
+alert(data.message)
+location.reload()
+})
+
+}
+
+/* ======================================================
+   Modificar Usuarios
+======================================================*/
+function editarUsuario(id,nombre,email,rol){
+
+const nuevoNombre = prompt("Editar nombre:",nombre)
+const nuevoEmail = prompt("Editar email:",email)
+
+if(!nuevoNombre || !nuevoEmail) return
+
+const token = localStorage.getItem("token")
+
+fetch(`http://127.0.0.1:5000/usuarios/${id}`,{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer " + token
+},
+
+body: JSON.stringify({
+nombre:nuevoNombre,
+email:nuevoEmail
+})
+
+})
+.then(res=>res.json())
+.then(data=>{
+
+alert(data.message)
+location.reload()
+
+})
+
+}

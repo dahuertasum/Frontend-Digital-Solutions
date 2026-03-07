@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../src/css/style.css">
+
+    <title>Digital Solution</title>
+
+</head>
+
+<body>
+
+
+    <!-- ================= MARQUESINA ================= -->
+
+    <section class="marquesina">
+
+        <div class="mensajes">
+
+            <div class="mensaje">♻ Tecnología reacondicionada</div>
+            <div class="mensaje">Envíos a todo Colombia</div>
+            <div class="mensaje">Garantía 6 meses</div>
+            <div class="mensaje">🚚 Envío gratis en compras mayores a $500.000</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACTO SUPERIOR ================= -->
+
+    <section class="pre-container">
+
+        <div class="telphones">
+            <b>📞 +57 317 381 6078 | ✉ soporte@digitalsolutions.com</b>
+        </div>
+
+        <div class="social">
+
+            <ul class="social_net_black">
+
+                <li>
+                    <a href="#">
+                        <img class="nets_black"
+                            src="../src/assets/img/logos/facebook-fondo-negro.png"
+                            alt="icono de facebook">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img class="nets_black"
+                            src="../src/assets/img/logos/instagram-fondo-negro.png"
+                            alt="icono de instagram">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img class="nets_black"
+                            src="../src/assets/img/logos/twitter-fondo-negro.png"
+                            alt="icono de twitter">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img class="nets_black"
+                            src="../src/assets/img/logos/whastapp.png"
+                            alt="icono de whatsapp">
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+
+    <header class="topbar">
+
+        <!-- LOGO -->
+
+        <div class="logo-container">
+
+            <img
+                class="logo"
+                src="../src/assets/img/logos/logo.png"
+                alt="Certificado">
+
+        </div>
+
+
+        <!-- MENU PRINCIPAL -->
+
+        <nav class="nav-principal">
+
+            <a href="index.html">Inicio</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="productos.html">Productos</a>
+            <a href="index.html">Garantía</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="documentacion.html">Documentación</a>
+
+        </nav>
+
+
+        <!-- ACCIONES (LOGIN / CART) -->
+
+        <div class="actions">
+
+            <a class="btn primary" href="login.html">Iniciar sesión</a>
+
+            <a class="btn outline" href="registro.html">Regístrate</a>
+
+
+            <!-- CARRITO -->
+
+            <button id="cart" type="button" class="cart">
+                <i class="fa-solid fa-cart-arrow-down"></i>
+            </button>
+
+            <span id="cartCount">0</span>
+
+
+            <!-- CONTENEDOR CARRITO -->
+
+            <div class="caja" id="caja">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Acción</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="contentProducts">
+
+                        <tr>
+                            <td class="msj">No hay productos agregados</td>
+                        </tr>
+
+                    </tbody>
+
+
+                    <tfoot>
+
+                        <tr>
+
+                            <td colspan="5">
+                                <p class="total">
+                                    Total: <span id="total"></span>
+                                </p>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td colspan="5">
+
+                                <button id="checkoutBtn" class="btn primary">
+                                    Finalizar compra
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tfoot>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ADMIN ================= -->
+
+    <section class="admin-dashboard">
+
+         <div class="admin-container">
+            <div class="admin-header">
+
+                <button class="btn-logout" onclick="logoutAdmin()">
+                Salir del panel
+                </button>
+
+            </div>
+
+            <h2 class="admin-title">Panel de Administración</h2>
+            <p class="admin-subtitle">Gestiona los usuarios del sistema</p>
+
+            <!-- TARJETAS ESTADISTICAS -->
+
+            <div class="admin-cards">
+
+            <div class="admin-card">
+                <h3>Total Usuarios</h3>
+                <p id="totalUsuarios">0</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Administradores</h3>
+                <p id="totalAdmins">0</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Clientes</h3>
+                <p id="totalClientes">0</p>
+            </div>
+
+            </div>
+
+
+            <!-- TABLA USUARIOS -->
+
+            <div class="admin-table-container">
+
+                <table class="admin-table" id="tablaUsuarios">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="../src/js/app.js"></script>
+</body>
+</html>
