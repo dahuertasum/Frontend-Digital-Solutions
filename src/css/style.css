@@ -1765,6 +1765,7 @@ body.modo-contraste .impacto-card,
 body.modo-contraste .proceso-step {
   background-color: #1e1e1e;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 body.modo-contraste .product {
@@ -2116,7 +2117,7 @@ background:#2F4017;
   }
 
   .logo {
-    margin-top: 5%;
+    margin-top: 30%;
   }
 
   .nav-principal {
@@ -2137,6 +2138,10 @@ background:#2F4017;
   .product {
     height: auto;
     min-height: 350px;
+  }
+
+  #caja {
+    right: 50px;
   }
 
   .slider {
@@ -2181,7 +2186,7 @@ background:#2F4017;
   .login-section,
   .register-section {
     min-height: auto;
-    padding-top: 60px;
+    padding-top: 50%;
     padding-bottom: 60px;
   }
 }
