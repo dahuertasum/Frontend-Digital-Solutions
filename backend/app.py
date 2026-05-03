@@ -5,7 +5,7 @@ import bcrypt
 import jwt
 from datetime import datetime, timedelta, timezone
 
-app = Flask(__name__, static_folder='./public')
+app = Flask(__name__, static_folder='../public')
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
