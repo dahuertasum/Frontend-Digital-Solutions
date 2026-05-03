@@ -18,7 +18,7 @@ db = mysql.connector.connect(
 )
 
 # LOGIN
-@app.route('/login', methods=['POST'])
+@app.route('/', methods=['POST'])
 def login():
 
     data = request.json
