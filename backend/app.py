@@ -5,7 +5,7 @@ import bcrypt
 import jwt
 from datetime import datetime, timedelta, timezone
 
-app = Flask(__name__, static_folder='.../public')
+app = Flask(__name__, static_folder='../public', static_url_path='')
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
@@ -23,9 +23,7 @@ db = mysql.connector.connect(
 def home():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/<path:path>')
-def static_files(path):
-    return send_from_directory(app.static_folder, path)
+
 
 
 # 🔐 LOGIN
