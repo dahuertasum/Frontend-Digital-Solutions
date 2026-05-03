@@ -86,7 +86,7 @@ def login():
 def registro():
     data = request.json
 
-    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     cursor = db.cursor()
     cursor.execute(
