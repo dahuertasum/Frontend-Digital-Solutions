@@ -365,7 +365,7 @@ if (registerForm) {
 
       try {
 
-        const response = await fetch("http://127.0.0.1:5000/registro", {
+        const response = await fetch("https://frontend-digital-solutions.onrender.com/registro", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -429,7 +429,7 @@ window.location.href="login.html"
 ======================================================*/
 const token = localStorage.getItem("token")
 
-fetch("http://127.0.0.1:5000/usuarios",{
+fetch("https://frontend-digital-solutions.onrender.com/usuarios",{
 
 headers:{
 "Authorization":"Bearer " + token
