@@ -10,10 +10,11 @@ app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
 db = mysql.connector.connect(
-    host="localhost",
+    host="tramway.proxy.rlwy.net",
     user="root",
-    password="1234",
-    database="digital_solutions"
+    password="IQCVOqAecROUXHeVjDIDcNGsfktWFPuR",
+    database="railway",
+    port=27629
 )
 
 # LOGIN
