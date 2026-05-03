@@ -6,12 +6,13 @@ import jwt
 from datetime import datetime, timedelta, timezone
 import os
 
+# 📁 RUTA ABSOLUTA A /backend/public
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_FOLDER = os.path.join(BASE_DIR, '..', 'public')
+STATIC_FOLDER = os.path.join(BASE_DIR, "public")
+
 print("STATIC PATH:", STATIC_FOLDER)
 
 app = Flask(__name__, static_folder=STATIC_FOLDER)
-
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
@@ -24,16 +25,13 @@ db = mysql.connector.connect(
     port=27629
 )
 
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory(app.static_folder, path)
-
 # 🌐 HOME
 @app.route('/')
 def home():
     return send_from_directory(app.static_folder, 'index.html')
 
-# 📄 RUTAS DE PÁGINAS (HTML)
+
+# 📄 RUTAS HTML
 @app.route('/login', methods=['GET'])
 def login_page():
     return send_from_directory(app.static_folder, 'login.html')
@@ -55,9 +53,7 @@ def dashboard_page():
     return send_from_directory(app.static_folder, 'dashboard.html')
 
 
-
-
-# 🔐 LOGIN (API)
+# 🔐 LOGIN API
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -85,27 +81,24 @@ def login():
     return jsonify({"message": "Credenciales incorrectas"}), 401
 
 
-# 📝 REGISTRO (API)
+# 📝 REGISTRO API
 @app.route('/registro', methods=['POST'])
 def registro():
     data = request.json
-    nombre = data['nombre']
-    email = data['email']
-    password = data['password']
 
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
 
     cursor = db.cursor()
     cursor.execute(
         "INSERT INTO usuarios (nombre,email,password) VALUES (%s,%s,%s)",
-        (nombre, email, hashed_password)
+        (data['nombre'], data['email'], hashed_password)
     )
     db.commit()
 
     return jsonify({"message": "Usuario registrado"})
 
 
-# 👥 OBTENER USUARIOS (PROTEGIDO)
+# 👥 USUARIOS
 @app.route('/usuarios', methods=['GET'])
 def obtener_usuarios():
     token = request.headers.get('Authorization')
@@ -126,7 +119,7 @@ def obtener_usuarios():
     return jsonify(usuarios)
 
 
-# 🗑 ELIMINAR USUARIO
+# 🗑 ELIMINAR
 @app.route('/usuarios/<int:id>', methods=['DELETE'])
 def eliminar_usuario(id):
     cursor = db.cursor()
@@ -136,7 +129,7 @@ def eliminar_usuario(id):
     return jsonify({"message": "Usuario eliminado"})
 
 
-# ✏️ ACTUALIZAR USUARIO
+# ✏️ ACTUALIZAR
 @app.route('/usuarios/<int:id>', methods=['PUT'])
 def actualizar_usuario(id):
     data = request.json
@@ -151,7 +144,7 @@ def actualizar_usuario(id):
     return jsonify({"message": "Usuario actualizado"})
 
 
-# 📦 SERVIR ARCHIVOS ESTÁTICOS (CSS, JS, IMG)
+# 📦 ARCHIVOS ESTÁTICOS (CSS, JS, IMG)
 @app.route('/<path:path>')
 def static_files(path):
     return send_from_directory(app.static_folder, path)
