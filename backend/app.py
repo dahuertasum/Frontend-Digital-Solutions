@@ -8,6 +8,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_FOLDER = os.path.join(BASE_DIR, '..', 'public')
+print("STATIC PATH:", STATIC_FOLDER)
 
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
 
