@@ -360,7 +360,7 @@ if (registerForm) {
       errorConfirm.textContent = "";
     }
 
-    // SI TODO ES VALIDO -> LLAMAR API
+    // 🚀 SI TODO ES VALIDO
     if (valid) {
 
       try {
@@ -371,20 +371,32 @@ if (registerForm) {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            nombre: nombre,
-            email: email,
-            password: password
+            nombre,
+            email,
+            password
           })
         });
 
         const data = await response.json();
 
-        alert(data.message);
+        // ✅ SI TODO SALE BIEN
+        if (response.ok) {
+          alert(data.message || "Usuario registrado correctamente");
+
+          // limpiar formulario
+          registerForm.reset();
+
+          // redirigir al login
+          window.location.href = "login.html";
+
+        } else {
+          // ❌ ERROR CONTROLADO
+          alert(data.error || "Error al registrar usuario");
+        }
 
       } catch (error) {
-
         console.error("Error en registro:", error);
-
+        alert("Error de conexión con el servidor");
       }
 
     }
