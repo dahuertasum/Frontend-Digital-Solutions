@@ -10,6 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_FOLDER = os.path.join(BASE_DIR, '..', 'public')
 
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
+
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
@@ -47,6 +48,10 @@ def contacto_page():
 @app.route('/dashboard', methods=['GET'])
 def dashboard_page():
     return send_from_directory(app.static_folder, 'dashboard.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory(app.static_folder, path)
 
 
 # 🔐 LOGIN (API)
