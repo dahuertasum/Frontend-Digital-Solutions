@@ -12,7 +12,7 @@ CORS(app)
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Admin123",
+    password="1234",
     database="digital_solutions"
 )
 

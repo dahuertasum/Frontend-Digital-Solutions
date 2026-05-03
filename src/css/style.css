@@ -1974,6 +1974,9 @@ background:#2F4017;
     max-width: 520px;
     padding: 60px 50px;
   }
+  .slider{
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 
 /* MOBILE (Max 768px) */
