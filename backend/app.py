@@ -18,15 +18,34 @@ db = mysql.connector.connect(
     port=27629
 )
 
-# 🌐 HOME (sirve tu index.html)
+# 🌐 HOME
 @app.route('/')
 def home():
     return send_from_directory(app.static_folder, 'index.html')
 
+# 📄 RUTAS DE PÁGINAS (HTML)
+@app.route('/login', methods=['GET'])
+def login_page():
+    return send_from_directory(app.static_folder, 'login.html')
+
+@app.route('/registro', methods=['GET'])
+def registro_page():
+    return send_from_directory(app.static_folder, 'registro.html')
+
+@app.route('/productos', methods=['GET'])
+def productos_page():
+    return send_from_directory(app.static_folder, 'productos.html')
+
+@app.route('/contacto', methods=['GET'])
+def contacto_page():
+    return send_from_directory(app.static_folder, 'contacto.html')
+
+@app.route('/dashboard', methods=['GET'])
+def dashboard_page():
+    return send_from_directory(app.static_folder, 'dashboard.html')
 
 
-
-# 🔐 LOGIN
+# 🔐 LOGIN (API)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -34,9 +53,7 @@ def login():
     password = data['password']
 
     cursor = db.cursor(dictionary=True)
-
-    query = "SELECT * FROM usuarios WHERE email=%s"
-    cursor.execute(query, (email,))
+    cursor.execute("SELECT * FROM usuarios WHERE email=%s", (email,))
     user = cursor.fetchone()
 
     if user and bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
@@ -53,11 +70,10 @@ def login():
             "token": token
         })
 
-    else:
-        return jsonify({"message": "Credenciales incorrectas"}), 401
+    return jsonify({"message": "Credenciales incorrectas"}), 401
 
 
-# 📝 REGISTRO
+# 📝 REGISTRO (API)
 @app.route('/registro', methods=['POST'])
 def registro():
     data = request.json
@@ -68,9 +84,10 @@ def registro():
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     cursor = db.cursor()
-    query = "INSERT INTO usuarios (nombre,email,password) VALUES (%s,%s,%s)"
-    cursor.execute(query, (nombre, email, hashed_password))
-
+    cursor.execute(
+        "INSERT INTO usuarios (nombre,email,password) VALUES (%s,%s,%s)",
+        (nombre, email, hashed_password)
+    )
     db.commit()
 
     return jsonify({"message": "Usuario registrado"})
@@ -86,13 +103,9 @@ def obtener_usuarios():
 
     try:
         token = token.split(" ")[1]
-        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-
-    except jwt.ExpiredSignatureError:
-        return jsonify({"message": "Token expirado"}), 401
-
-    except jwt.InvalidTokenError:
-        return jsonify({"message": "Token inválido"}), 401
+        jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    except:
+        return jsonify({"message": "Token inválido o expirado"}), 401
 
     cursor = db.cursor(dictionary=True)
     cursor.execute("SELECT id,nombre,email,rol FROM usuarios")
@@ -115,15 +128,21 @@ def eliminar_usuario(id):
 @app.route('/usuarios/<int:id>', methods=['PUT'])
 def actualizar_usuario(id):
     data = request.json
-    nombre = data['nombre']
-    email = data['email']
 
     cursor = db.cursor()
-    query = "UPDATE usuarios SET nombre=%s,email=%s WHERE id=%s"
-    cursor.execute(query, (nombre, email, id))
+    cursor.execute(
+        "UPDATE usuarios SET nombre=%s,email=%s WHERE id=%s",
+        (data['nombre'], data['email'], id)
+    )
     db.commit()
 
     return jsonify({"message": "Usuario actualizado"})
+
+
+# 📦 SERVIR ARCHIVOS ESTÁTICOS (CSS, JS, IMG)
+@app.route('/<path:path>')
+def static_files(path):
+    return send_from_directory(app.static_folder, path)
 
 
 # 🚀 RUN
