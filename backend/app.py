@@ -84,18 +84,39 @@ def login():
 # 📝 REGISTRO API
 @app.route('/registro', methods=['POST'])
 def registro():
-    data = request.json
+    try:
+        data = request.json
 
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        nombre = data.get('nombre')
+        email = data.get('email')
+        password = data.get('password')
 
-    cursor = db.cursor()
-    cursor.execute(
-        "INSERT INTO usuarios (nombre,email,password) VALUES (%s,%s,%s)",
-        (data['nombre'], data['email'], hashed_password)
-    )
-    db.commit()
+        if not nombre or not email or not password:
+            return jsonify({"error": "Faltan datos"}), 400
 
-    return jsonify({"message": "Usuario registrado"})
+        hashed_password = bcrypt.hashpw(
+            password.encode('utf-8'),
+            bcrypt.gensalt()
+        ).decode('utf-8')
+
+        cursor = db.cursor()
+
+        cursor.execute(
+            "INSERT INTO usuarios (nombre,email,password) VALUES (%s,%s,%s)",
+            (nombre, email, hashed_password)
+        )
+
+        db.commit()
+
+        return jsonify({"message": "Usuario registrado correctamente"})
+
+    except mysql.connector.Error as err:
+        print("MYSQL ERROR:", err)
+        return jsonify({"error": str(err)}), 500
+
+    except Exception as e:
+        print("GENERAL ERROR:", e)
+        return jsonify({"error": str(e)}), 500
 
 
 # 👥 USUARIOS
