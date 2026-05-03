@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_FOLDER = os.path.join(BASE_DIR, '..', 'public')
 print("STATIC PATH:", STATIC_FOLDER)
 
-app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
+app = Flask(__name__, static_folder=STATIC_FOLDER)
 
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
@@ -23,6 +23,10 @@ db = mysql.connector.connect(
     database="railway",
     port=27629
 )
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory(app.static_folder, path)
 
 # 🌐 HOME
 @app.route('/')
@@ -50,9 +54,7 @@ def contacto_page():
 def dashboard_page():
     return send_from_directory(app.static_folder, 'dashboard.html')
 
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory(app.static_folder, path)
+
 
 
 # 🔐 LOGIN (API)
