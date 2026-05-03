@@ -230,8 +230,8 @@ if (loginForm) {
 
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
     const errorEmail = document.getElementById("errorEmail");
     const errorPassword = document.getElementById("errorPassword");
@@ -241,6 +241,7 @@ if (loginForm) {
 
     let valid = true;
 
+    // Validación email
     if (!emailRegex.test(email)) {
       errorEmail.textContent = "Correo inválido";
       valid = false;
@@ -248,6 +249,7 @@ if (loginForm) {
       errorEmail.textContent = "";
     }
 
+    // Validación password
     if (!passwordRegex.test(password)) {
       errorPassword.textContent =
         "Debe tener 8 caracteres, una mayúscula y un número";
@@ -256,39 +258,40 @@ if (loginForm) {
       errorPassword.textContent = "";
     }
 
-    if (valid) {
+    if (!valid) return;
 
-      try {
+    try {
 
-        const response = await fetch("https://frontend-digital-solutions.onrender.com/login", {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
 
-          method: "POST",
+      const data = await response.json();
 
-          headers: {
-            "Content-Type": "application/json"
-          },
+      if (response.ok && data.token) {
 
-          body: JSON.stringify({
-            email: email,
-            password: password
-          })
+        // 🔐 guardar token
+        localStorage.setItem("token", data.token);
 
-        });
+        alert("Login exitoso 🚀");
 
-        const data = await response.json();
+        // 🔁 redirección correcta
+        window.location.href = "/dashboard";
 
-        if(data.token){
-          localStorage.setItem("token", data.token)
-          alert("Login exitoso")
-          window.location.href="dashboard.html"
-        }
-
-      } catch (error) {
-
-        console.error("Error login:", error);
-
+      } else {
+        alert(data.message || "Error en el login");
       }
 
+    } catch (error) {
+      console.error("Error login:", error);
+      alert("Error de conexión con el servidor");
     }
 
   });
