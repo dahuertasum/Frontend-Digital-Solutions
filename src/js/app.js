@@ -44,12 +44,12 @@
       div.innerHTML = `
       <div class="product-image-container">
         <img 
-          src="../src/assets/img/${producto.imagenes.front}" 
+          src="img/${producto.imagenes.front}" 
           alt="${producto.nombre}"
           class="front"
         >
         <img 
-          src="../src/assets/img/${producto.imagenes.back}" 
+          src="img/${producto.imagenes.back}" 
           alt="${producto.nombre}"
           class="back"
         >

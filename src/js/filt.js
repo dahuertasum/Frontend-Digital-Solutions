@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const productHTML = `
             <div class="product">
               <div class="product-image-container">
-                <img src="../src/assets/img/${product.imagenes.front}" alt="${product.nombre}" class="front" />
-                <img src="../src/assets/img/${product.imagenes.back}" alt="${product.nombre}" class="back" />
+                <img src="img/${product.imagenes.front}" alt="${product.nombre}" class="front" />
+                <img src="img/${product.imagenes.back}" alt="${product.nombre}" class="back" />
               </div>
               <div class="product-text">
                 <h3>${product.nombre}</h3>
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   ${precioAnterior ? `<span class="price-old">$${precioAnterior.toLocaleString()}</span>` : ""}
                   <span class="price price-new">$${precioActual.toLocaleString()}</span>
                 </p>
-                <button class="btn-add" type="button" data-id="${product.id}" data-title="${product.nombre}" data-price="${precioActual}" data-img="../src/assets/img/${product.imagenes.front}">Agregar</button>
+                <button class="btn-add" type="button" data-id="${product.id}" data-title="${product.nombre}" data-price="${precioActual}" data-img="img/${product.imagenes.front}">Agregar</button>
               </div>
             </div>
           `;
