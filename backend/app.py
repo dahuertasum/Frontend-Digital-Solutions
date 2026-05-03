@@ -4,8 +4,12 @@ import mysql.connector
 import bcrypt
 import jwt
 from datetime import datetime, timedelta, timezone
+import os
 
-app = Flask(__name__, static_folder='../public', static_url_path='')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_FOLDER = os.path.join(BASE_DIR, '..', 'public')
+
+app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
 app.config['SECRET_KEY'] = 'mi_clave_super_secreta'
 CORS(app)
 
