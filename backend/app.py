@@ -125,24 +125,31 @@ def obtener_usuarios():
 
     auth_header = request.headers.get('Authorization')
 
-    if not auth_header:
+    print("HEADER:", auth_header)  # 👈 DEBUG
+
+    if not auth_header or not auth_header.startswith("Bearer "):
         return jsonify({"message": "Token requerido"}), 403
 
     try:
         token = auth_header.split(" ")[1]
 
-        decoded = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        decoded = jwt.decode(
+            token,
+            app.config['SECRET_KEY'],
+            algorithms=["HS256"]
+        )
+
+        print("TOKEN OK:", decoded)
 
     except Exception as e:
-        print("ERROR TOKEN:", e)
-        return jsonify({"message": "Token inválido"}), 401
+        print("ERROR TOKEN:", str(e))
+        return jsonify({"message": "Token inválido o expirado"}), 401
 
     cursor = db.cursor(dictionary=True)
     cursor.execute("SELECT id, nombre, email, rol FROM usuarios")
     usuarios = cursor.fetchall()
 
     return jsonify(usuarios)
-
 
 # 🗑 ELIMINAR
 @app.route('/usuarios/<int:id>', methods=['DELETE'])
