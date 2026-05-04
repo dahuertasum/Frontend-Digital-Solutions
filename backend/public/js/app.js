@@ -219,7 +219,7 @@ function filterProducts() {
 
 
 /* ======================================================
-   LOGIN
+   LOGIN - PRO FIX
 ======================================================*/
 
 const loginForm = document.getElementById("loginForm");
@@ -241,7 +241,7 @@ if (loginForm) {
 
     let valid = true;
 
-    // Validación email
+    // 📧 Validación email
     if (!emailRegex.test(email)) {
       errorEmail.textContent = "Correo inválido";
       valid = false;
@@ -249,10 +249,10 @@ if (loginForm) {
       errorEmail.textContent = "";
     }
 
-    // Validación password
+    // 🔐 Validación password
     if (!passwordRegex.test(password)) {
       errorPassword.textContent =
-        "Debe tener 8 caracteres, una mayúscula y un número";
+        "Debe tener mínimo 8 caracteres, una mayúscula y un número";
       valid = false;
     } else {
       errorPassword.textContent = "";
@@ -262,36 +262,53 @@ if (loginForm) {
 
     try {
 
-      const response = await fetch("/login", {
+      const response = await fetch("https://frontend-digital-solutions.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          email: email,
-          password: password
+          email,
+          password
         })
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.token) {
-
-        // 🔐 guardar token
-        localStorage.setItem("token", data.token);
-
-        alert("Login exitoso 🚀");
-
-        // 🔁 redirección correcta
-        window.location.href = "/dashboard";
-
-      } else {
-        alert(data.message || "Error en el login");
+      // ⚠️ prevenir error de HTML
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("El servidor no devolvió JSON válido");
       }
 
+      // 🚨 manejo de errores backend
+      if (!response.ok) {
+        alert(data.message || "Credenciales incorrectas");
+        return;
+      }
+
+      // 🔥 VALIDACIÓN CLAVE
+      if (!data.token) {
+        console.error("Respuesta incorrecta:", data);
+        alert("El servidor no envió el token");
+        return;
+      }
+
+      // 🔐 guardar token CORRECTAMENTE
+      localStorage.setItem("token", data.token);
+
+      console.log("TOKEN GUARDADO:", data.token);
+
+      alert("Login exitoso 🚀");
+
+      // 🔁 redirección
+      window.location.href = "/dashboard";
+
     } catch (error) {
-      console.error("Error login:", error);
+
+      console.error("❌ Error login:", error);
       alert("Error de conexión con el servidor");
+
     }
 
   });
