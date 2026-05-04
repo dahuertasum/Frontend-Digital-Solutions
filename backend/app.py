@@ -122,19 +122,23 @@ def registro():
 # 👥 USUARIOS
 @app.route('/usuarios', methods=['GET'])
 def obtener_usuarios():
-    token = request.headers.get('Authorization')
 
-    if not token:
+    auth_header = request.headers.get('Authorization')
+
+    if not auth_header:
         return jsonify({"message": "Token requerido"}), 403
 
     try:
-        token = token.split(" ")[1]
-        jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-    except:
-        return jsonify({"message": "Token inválido o expirado"}), 401
+        token = auth_header.split(" ")[1]
+
+        decoded = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+
+    except Exception as e:
+        print("ERROR TOKEN:", e)
+        return jsonify({"message": "Token inválido"}), 401
 
     cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT id,nombre,email,rol FROM usuarios")
+    cursor.execute("SELECT id, nombre, email, rol FROM usuarios")
     usuarios = cursor.fetchall()
 
     return jsonify(usuarios)
