@@ -437,7 +437,7 @@ window.location.href="login.html"
 }
 
 /* ======================================================
-   USUARIOS (DASHBOARD) - PRO
+   USUARIOS (DASHBOARD) - PRO FIX REAL
 ======================================================*/
 
 async function cargarUsuarios() {
@@ -460,22 +460,30 @@ async function cargarUsuarios() {
       }
     });
 
-    // 🚨 manejar errores
+    // 🚨 manejar sesión expirada
     if (response.status === 401 || response.status === 403) {
-      alert("Sesión expirada, vuelve a iniciar sesión");
+      alert("Sesión expirada, inicia sesión nuevamente");
       localStorage.removeItem("token");
       window.location.href = "login.html";
       return;
     }
 
+    // 🚨 si backend responde mal
     if (!response.ok) {
-      throw new Error("Error al obtener usuarios");
+      throw new Error("Error en la respuesta del servidor");
     }
 
-    const data = await response.json();
+    // ⚠️ prevenir error de HTML en vez de JSON
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      throw new Error("El servidor no devolvió JSON válido");
+    }
 
-    // 🧠 VALIDACIÓN CLAVE (evita tu error)
+    // 🧠 validar que sea array (esto era tu error principal)
     if (!Array.isArray(data)) {
+      console.error("Respuesta real del backend:", data);
       throw new Error("La respuesta no es una lista de usuarios");
     }
 
@@ -498,9 +506,9 @@ async function cargarUsuarios() {
       if (user.rol === "admin") totalAdmins++;
       else totalClientes++;
 
-      // 🛡️ evitar romper HTML con comillas
-      const nombreSeguro = user.nombre.replace(/'/g, "\\'");
-      const emailSeguro = user.email.replace(/'/g, "\\'");
+      // 🛡️ evitar romper HTML (IMPORTANTE)
+      const nombreSeguro = (user.nombre || "").replace(/'/g, "\\'");
+      const emailSeguro = (user.email || "").replace(/'/g, "\\'");
 
       tr.innerHTML = `
         <td>${user.id}</td>
@@ -529,7 +537,7 @@ async function cargarUsuarios() {
 
   } catch (error) {
 
-    console.error("Error cargando usuarios:", error);
+    console.error("❌ Error cargando usuarios:", error);
     alert("No se pudieron cargar los usuarios");
 
   }
