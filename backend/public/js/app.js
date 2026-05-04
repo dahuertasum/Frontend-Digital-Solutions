@@ -437,98 +437,139 @@ window.location.href="login.html"
 }
 
 /* ======================================================
-   Usuarios
+   USUARIOS (DASHBOARD)
 ======================================================*/
-const token = localStorage.getItem("token")
 
-fetch("https://frontend-digital-solutions.onrender.com/usuarios",{
+async function cargarUsuarios() {
 
-headers:{
-"Authorization":"Bearer " + token
+  const token = localStorage.getItem("token");
+
+  // 🔐 validar token
+  if (!token) {
+    alert("Debes iniciar sesión");
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+
+    const response = await fetch("https://frontend-digital-solutions.onrender.com/usuarios", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      }
+    });
+
+    // 🚨 manejar errores del backend
+    if (!response.ok) {
+      throw new Error("Error al obtener usuarios (posible token inválido)");
+    }
+
+    const data = await response.json();
+
+    const tbody = document.querySelector("#tablaUsuarios tbody");
+    tbody.innerHTML = ""; // limpiar tabla antes de cargar
+
+    // 📊 contadores
+    let totalUsuarios = 0;
+    let totalAdmins = 0;
+    let totalClientes = 0;
+
+    data.forEach(user => {
+
+      const tr = document.createElement("tr");
+
+      const rolTexto = user.rol === "admin" ? "Administrador" : "Cliente";
+
+      // contar
+      totalUsuarios++;
+
+      if (user.rol === "admin") {
+        totalAdmins++;
+      } else {
+        totalClientes++;
+      }
+
+      tr.innerHTML = `
+        <td>${user.id}</td>
+        <td>${user.nombre}</td>
+        <td>${user.email}</td>
+        <td>${rolTexto}</td>
+        <td class="admin-actions">
+          <button class="btn-edit" onclick="editarUsuario(${user.id}, '${user.nombre}', '${user.email}', '${user.rol}')">
+            Editar
+          </button>
+          <button class="btn-delete" onclick="eliminarUsuario(${user.id})">
+            Eliminar
+          </button>
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+    // 🧠 actualizar tarjetas
+    document.getElementById("totalUsuarios").textContent = totalUsuarios;
+    document.getElementById("totalAdmins").textContent = totalAdmins;
+    document.getElementById("totalClientes").textContent = totalClientes;
+
+  } catch (error) {
+
+    console.error("Error cargando usuarios:", error);
+    alert("Error al cargar usuarios");
+
+  }
 }
 
-})
-.then(res=>res.json())
-.then(data=>{
-
-const tbody = document.querySelector("#tablaUsuarios tbody")
-
-// contadores
-let totalUsuarios = 0
-let totalAdmins = 0
-let totalClientes = 0
-
-data.forEach(user=>{
-
-const tr = document.createElement("tr")
-
-const rolTexto = user.rol === "admin" ? "Administrador" : "Cliente"
-
-// contar usuarios
-totalUsuarios++
-
-if(user.rol === "admin"){
-totalAdmins++
-}else{
-totalClientes++
-}
-
-tr.innerHTML = `
-<td>${user.id}</td>
-<td>${user.nombre}</td>
-<td>${user.email}</td>
-<td>${rolTexto}</td>
-<td class="admin-actions">
-
-<button class="btn-edit" onclick="editarUsuario(${user.id}, '${user.nombre}', '${user.email}', '${user.rol}')">
-Editar
-</button>
-
-<button class="btn-delete" onclick="eliminarUsuario(${user.id})">
-Eliminar
-</button>
-
-</td>
-`
-
-tbody.appendChild(tr)
-
-})
-
-// actualizar tarjetas
-
-document.getElementById("totalUsuarios").textContent = totalUsuarios
-document.getElementById("totalAdmins").textContent = totalAdmins
-document.getElementById("totalClientes").textContent = totalClientes
-
-})
-
+// 🚀 ejecutar automáticamente
+document.addEventListener("DOMContentLoaded", cargarUsuarios);
 
 /* ======================================================
-   Eliminar Usuarios
+   ELIMINAR USUARIOS
 ======================================================*/
 
-function eliminarUsuario(id){
+async function eliminarUsuario(id) {
 
-const token = localStorage.getItem("token")
+  const confirmar = confirm("¿Seguro que quieres eliminar este usuario?");
+  if (!confirmar) return;
 
-fetch(`http://127.0.0.1:5000/usuarios/${id}`,{
+  const token = localStorage.getItem("token");
 
-method:"DELETE",
+  if (!token) {
+    alert("Debes iniciar sesión");
+    window.location.href = "login.html";
+    return;
+  }
 
-headers:{
-"Authorization":"Bearer " + token
+  try {
+
+    const response = await fetch(`https://frontend-digital-solutions.onrender.com/usuarios/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al eliminar usuario");
+    }
+
+    const data = await response.json();
+
+    alert(data.message);
+
+    // 🔄 recargar lista sin refrescar toda la página
+    cargarUsuarios();
+
+  } catch (error) {
+
+    console.error("Error eliminando usuario:", error);
+    alert("No se pudo eliminar el usuario");
+
+  }
 }
-
-})
-.then(res=>res.json())
-.then(data=>{
-alert(data.message)
-location.reload()
-})
-
-}
-
 /* ======================================================
    Modificar Usuarios
 ======================================================*/
