@@ -454,14 +454,19 @@ window.location.href="login.html"
 }
 
 /* ======================================================
-   USUARIOS (DASHBOARD) - PRO FIX REAL
+   USUARIOS (DASHBOARD) - FIX FINAL
 ======================================================*/
+
+// 🚨 ejecutar SOLO en dashboard
+if (window.location.pathname.includes("dashboard.html")) {
+  document.addEventListener("DOMContentLoaded", cargarUsuarios);
+}
 
 async function cargarUsuarios() {
 
   const token = localStorage.getItem("token");
 
-  // 🔐 validar token
+  // 🔐 validar token (solo aquí, no en login)
   if (!token) {
     alert("Debes iniciar sesión");
     window.location.href = "login.html";
@@ -477,7 +482,7 @@ async function cargarUsuarios() {
       }
     });
 
-    // 🚨 manejar sesión expirada
+    // 🚨 sesión expirada
     if (response.status === 401 || response.status === 403) {
       alert("Sesión expirada, inicia sesión nuevamente");
       localStorage.removeItem("token");
@@ -485,12 +490,11 @@ async function cargarUsuarios() {
       return;
     }
 
-    // 🚨 si backend responde mal
     if (!response.ok) {
       throw new Error("Error en la respuesta del servidor");
     }
 
-    // ⚠️ prevenir error de HTML en vez de JSON
+    // ⚠️ validar JSON
     let data;
     try {
       data = await response.json();
@@ -498,13 +502,17 @@ async function cargarUsuarios() {
       throw new Error("El servidor no devolvió JSON válido");
     }
 
-    // 🧠 validar que sea array (esto era tu error principal)
+    // 🧠 validar array
     if (!Array.isArray(data)) {
-      console.error("Respuesta real del backend:", data);
+      console.error("Respuesta backend:", data);
       throw new Error("La respuesta no es una lista de usuarios");
     }
 
     const tbody = document.querySelector("#tablaUsuarios tbody");
+
+    // ⚠️ evitar error si no existe la tabla
+    if (!tbody) return;
+
     tbody.innerHTML = "";
 
     let totalUsuarios = 0;
@@ -517,13 +525,10 @@ async function cargarUsuarios() {
 
       const rolTexto = user.rol === "admin" ? "Administrador" : "Cliente";
 
-      // 📊 contadores
       totalUsuarios++;
+      user.rol === "admin" ? totalAdmins++ : totalClientes++;
 
-      if (user.rol === "admin") totalAdmins++;
-      else totalClientes++;
-
-      // 🛡️ evitar romper HTML (IMPORTANTE)
+      // 🛡️ sanitizar datos
       const nombreSeguro = (user.nombre || "").replace(/'/g, "\\'");
       const emailSeguro = (user.email || "").replace(/'/g, "\\'");
 
@@ -547,10 +552,14 @@ async function cargarUsuarios() {
       tbody.appendChild(tr);
     });
 
-    // 🧠 actualizar tarjetas
-    document.getElementById("totalUsuarios").textContent = totalUsuarios;
-    document.getElementById("totalAdmins").textContent = totalAdmins;
-    document.getElementById("totalClientes").textContent = totalClientes;
+    // 📊 actualizar tarjetas (si existen)
+    const totalU = document.getElementById("totalUsuarios");
+    const totalA = document.getElementById("totalAdmins");
+    const totalC = document.getElementById("totalClientes");
+
+    if (totalU) totalU.textContent = totalUsuarios;
+    if (totalA) totalA.textContent = totalAdmins;
+    if (totalC) totalC.textContent = totalClientes;
 
   } catch (error) {
 
@@ -559,9 +568,6 @@ async function cargarUsuarios() {
 
   }
 }
-
-// 🚀 ejecutar automáticamente
-document.addEventListener("DOMContentLoaded", cargarUsuarios);
 
 /* ======================================================
    ELIMINAR USUARIOS
