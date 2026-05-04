@@ -437,7 +437,7 @@ window.location.href="login.html"
 }
 
 /* ======================================================
-   USUARIOS (DASHBOARD)
+   USUARIOS (DASHBOARD) - PRO
 ======================================================*/
 
 async function cargarUsuarios() {
@@ -456,22 +456,32 @@ async function cargarUsuarios() {
     const response = await fetch("https://frontend-digital-solutions.onrender.com/usuarios", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer " + token
       }
     });
 
-    // 🚨 manejar errores del backend
+    // 🚨 manejar errores
+    if (response.status === 401 || response.status === 403) {
+      alert("Sesión expirada, vuelve a iniciar sesión");
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+      return;
+    }
+
     if (!response.ok) {
-      throw new Error("Error al obtener usuarios (posible token inválido)");
+      throw new Error("Error al obtener usuarios");
     }
 
     const data = await response.json();
 
-    const tbody = document.querySelector("#tablaUsuarios tbody");
-    tbody.innerHTML = ""; // limpiar tabla antes de cargar
+    // 🧠 VALIDACIÓN CLAVE (evita tu error)
+    if (!Array.isArray(data)) {
+      throw new Error("La respuesta no es una lista de usuarios");
+    }
 
-    // 📊 contadores
+    const tbody = document.querySelector("#tablaUsuarios tbody");
+    tbody.innerHTML = "";
+
     let totalUsuarios = 0;
     let totalAdmins = 0;
     let totalClientes = 0;
@@ -482,14 +492,15 @@ async function cargarUsuarios() {
 
       const rolTexto = user.rol === "admin" ? "Administrador" : "Cliente";
 
-      // contar
+      // 📊 contadores
       totalUsuarios++;
 
-      if (user.rol === "admin") {
-        totalAdmins++;
-      } else {
-        totalClientes++;
-      }
+      if (user.rol === "admin") totalAdmins++;
+      else totalClientes++;
+
+      // 🛡️ evitar romper HTML con comillas
+      const nombreSeguro = user.nombre.replace(/'/g, "\\'");
+      const emailSeguro = user.email.replace(/'/g, "\\'");
 
       tr.innerHTML = `
         <td>${user.id}</td>
@@ -497,10 +508,12 @@ async function cargarUsuarios() {
         <td>${user.email}</td>
         <td>${rolTexto}</td>
         <td class="admin-actions">
-          <button class="btn-edit" onclick="editarUsuario(${user.id}, '${user.nombre}', '${user.email}', '${user.rol}')">
+          <button class="btn-edit"
+            onclick="editarUsuario(${user.id}, '${nombreSeguro}', '${emailSeguro}', '${user.rol}')">
             Editar
           </button>
-          <button class="btn-delete" onclick="eliminarUsuario(${user.id})">
+          <button class="btn-delete"
+            onclick="eliminarUsuario(${user.id})">
             Eliminar
           </button>
         </td>
@@ -517,7 +530,7 @@ async function cargarUsuarios() {
   } catch (error) {
 
     console.error("Error cargando usuarios:", error);
-    alert("Error al cargar usuarios");
+    alert("No se pudieron cargar los usuarios");
 
   }
 }
